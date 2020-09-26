@@ -1,8 +1,8 @@
 const categories_url = "http:localhost:3000/categories"
 
-console.log('hii')
+const mainBody = document.querySelector("div#container")
 
-test = document.querySelector("div.container")
+let theProduct;
 
  fetch("http:localhost:3000/categories")
     .then(res => res.json())
@@ -10,28 +10,35 @@ test = document.querySelector("div.container")
     // const products_array = 
     catPOJO.forEach(function (category) {
         let category_name = category.name;
-        console.log(category_name);
+        // console.log(category_name);
         let products = category.products;
-        console.log(products);
+        // console.log(products);
         products.forEach(function (prod) {
-            let proName = prod.name;
-            let proImage = prod.image;
-            let proPrice = prod.price;
-            let proReviews = prod.reviews;
 
-            let proNameDiv = document.createElement('div')
-            proNameDiv.className = "name"
-            proNameDiv.innerText = proName
-            
-            let proImageDiv = document.createElement('img')
-            proImageDiv.className = "image"
-            proImageDiv.src = proImage
 
-            let proPriceDiv = document.createElement('div')
-            proPriceDiv.className = "price"
-            proPriceDiv.innerText = `Price: $${proPrice}.00`
+            let productDiv = document.createElement('div')
+            productDiv.className = "card"
+            mainBody.append(productDiv)
 
-            test.append(proImageDiv, proNameDiv, proPriceDiv)
+            let proName = document.createElement("h2")
+            proName.innerText = prod.name
+            productDiv.append(proName)
+
+
+            let proImage = document.createElement('img')
+            proImage.alt = prod.name
+            proImage.src = prod.image
+            productDiv.append(proImage)
+
+
+            let proPrice = document.createElement('p')
+            proPrice.innerText = `Price: $${prod.price}.00`
+            productDiv.append(proPrice)
+
+            productDiv.addEventListener('click', (evt) => {
+                console.log(prod)
+               // fetch goes here!! SHOW ME THE MONEYYYYYY
+            })
 
             
             
