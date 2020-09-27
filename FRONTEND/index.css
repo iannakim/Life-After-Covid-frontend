@@ -1,4 +1,4 @@
-body {
+/* body {
     margin: 0px;
     display: flex;
     width: 100vw;
@@ -60,4 +60,145 @@ body {
     display: inline-grid;
     margin: 1rem 2rem;
     box-shadow: 3px 4px #e04b52
+  } */
+
+
+
+/* --------overwritting bootstrap defaults------------------------  */
+.card {
+    border: none
+}
+
+.card-title {
+    text-align: center;
+    padding-top: 3%;
+    text-shadow: 0 0 black;
+}
+
+.card-text {
+    text-align: center;
+}
+
+/* .card-img-top { 
+    border-style: inset;
+} */
+
+
+
+
+  body {
+    font-family: "Lato", sans-serif;
+  }
+  
+/* ----------------------top-navbar ----------------------------- */
+.top-bar {
+    float: right;
+    padding: 10px 30px;
+}
+.top-bar a {
+    padding: 0 10px;
+    color: black;
+    text-decoration: none;
+}
+  /* ----------------sidebar ----------------------------------------- */
+  .sidebar {
+    height: 100%;
+    width: 30px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+
+ #sandwich-menu {
+     transform: rotate(90deg);
+     padding: 0 20px;
+     margin-top: 140px;
+     color: white;
+     font-size: 40px;
+     transition: 0.5s;
+ }
+
+ .sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidebar a:hover {
+    color: #f1f1f1;
+  }
+  
+  .sidebar .slimbtn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  .openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+  }
+  
+  .openbtn:hover {
+    background-color: #444;
+  }
+
+  .category {
+      padding-left: 50px!important
+  }
+  
+
+  /* ----------------Container that holds everything --------------- */
+  .container {
+    width: 100%;
+    padding: 50px;
+    transition: margin-left 0.5s;
+    margin-left: 30px;
+
+  }
+  
+  .col.mb-4 {
+      padding: 4%;
+  }
+ 
+  
+  #main {
+    transition: margin-left .5s;
+    /* padding: 16px; */
+  }
+
+
+
+  /* ------------------ Heading ----------------------------------- */
+  .main-container {
+      padding: 20px 0;
+  }
+  
+  .main-container h2{
+      text-align: center
+  }
+
+  .main-container p{
+    text-align: center
+}
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+    .sidebar {padding-top: 15px;}
+    .sidebar a {font-size: 18px;}
+ 
   }
