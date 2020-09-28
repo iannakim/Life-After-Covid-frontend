@@ -179,7 +179,9 @@ let showTheProductPage = (product) => {
 
     productDiv.append(cardHolder, proImage, proName, proPrice, proDescription)
 
-    // --------------------------- REVIEW -------------------------------------
+
+
+    // --------------------------- REVIEW FORM -------------------------------------
 
 
   const formContainer = document.querySelector('div#form-container')
@@ -215,31 +217,34 @@ let showTheProductPage = (product) => {
         event.preventDefault()
         let newNickName = event.target['review-nickname'].value
         let newReviewContent = event.target['review-content'].value
-        console.log(newReviewContent, newNickName)
+        console.log(`Nickname: ${newNickName}`)
+        console.log(`Content: ${newReviewContent}`)
+        console.log(product)
 
-        
-    // fetch(`http://localhost:3000/products/${product.id}/reviews`, {
-    //         method: "POST",
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify({
-    //             content: newReviewContent
-    //             nickname: 
-    //         })
-    //     })
-    //     .then(res => res.json())
-    //     .then((productPOJO) => {
-    //         showTheProductPage(productPOJO)
-    //     })
-    //     evt.target.reset()
+
+    fetch(`http://localhost:3000/reviews`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                content: newReviewContent
+                nickname: newNickname
+            })
+        })
+        .then(res => res.json())
+        .then((reviewPOJO) => {
+            console.log(reviewpojo)
+            // showTheProductPage(productPOJO)
+        })
+        event.target.reset()
     })
 
 
 
 
 
-    // ----------------------------------------------- Single reviews -----------------------------------------
+    // ---------------------- Display All Reviews ------------------------
     let proReview = document.createElement('div')
     proReview.className = 'single-review'
 
