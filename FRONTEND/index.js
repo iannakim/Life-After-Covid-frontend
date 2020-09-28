@@ -534,15 +534,15 @@ let ProductsBYCategory = (CatProduct) => {
         userArea.id = 'review-user'
         userArea.setAttribute("placeholder", "Create a user_id");
 
-    let productArea = document.createElement('input')
-        productArea.className = 'form-control'
-        productArea.id = 'review-product'
-        productArea.setAttribute("placeholder", "Create a product_id");
+    // let productArea = document.createElement('input')
+    //     productArea.className = 'form-control'
+    //     productArea.id = 'review-product'
+    //     productArea.setAttribute("placeholder", "Create a product_id");
     
     let star_ratingVar = document.createElement('input')
         star_ratingVar.className = 'form-control'
         star_ratingVar.id = 'review-rating'
-        star_ratingVar.setAttribute("placeholder", "Create start");
+        star_ratingVar.setAttribute("placeholder", "Create start_rating");
 
     let reviewArea = document.createElement('textarea')
         reviewArea.className = 'form-control'
@@ -558,7 +558,7 @@ let ProductsBYCategory = (CatProduct) => {
     reviewDiv.append(nickNameArea)
     reviewDiv.append(reviewArea)
     reviewDiv.append(star_ratingVar)
-    reviewDiv.append(productArea)
+    // reviewDiv.append(productArea)
     reviewDiv.append(userArea)
 
 
@@ -570,15 +570,16 @@ let ProductsBYCategory = (CatProduct) => {
         let newNickName = event.target['review-nickname'].value
         let newReviewContent = event.target['review-content'].value
         let newuser = parseInt(event.target['review-user'].value)
-        let newproduct = parseInt(event.target['review-product'].value)
+        // let newproduct = parseInt(event.target['review-product'].value)
         let newRating = parseInt(event.target['review-rating'].value)
 
 
 
         console.log(`Nickname: ${newNickName}`)
         console.log(`Content: ${newReviewContent}`)
-        console.log(typeof newuser)
-        console.log(newuser, newproduct, newRating)
+        console.log(`User: ${newuser}`)
+        console.log(`rating: ${newRating}`)
+        console.log(`product id: ${product.id}`)
 
 
 
@@ -591,7 +592,7 @@ let ProductsBYCategory = (CatProduct) => {
                 content: newReviewContent,
                 nickname: newNickName,
                 user_id: newuser,
-                product_id: newproduct,
+                product_id: product.id,
                 star_rating: newRating
 
             })
