@@ -181,44 +181,58 @@ let showTheProductPage = (product) => {
 
     // --------------------------- REVIEW -------------------------------------
 
-    let allProReviews = document.createElement('div')
-    allProReviews.className = 'reviews'
-    allProReviews.innerText = "Ratings & Reviews"
-    // mainBody.append(reviewForm, allProReviews)
+
+  const formContainer = document.querySelector('div#form-container')
+    let reviewForm = document.createElement('form')
+    reviewForm.id = 'new-review'
+    let reviewDiv = document.createElement('div')
+    reviewDiv.className = 'form-group'
+    
+    let nickNameArea = document.createElement('input')
+    nickNameArea.className = 'form-control'
+    nickNameArea.id = 'review-nickname'
+    nickNameArea.setAttribute("placeholder", "Create a nickname");
+    
+    let reviewArea = document.createElement('textarea')
+    reviewArea.className = 'form-control'
+    reviewArea.id = 'review-content'
+    reviewArea.setAttribute("placeholder", "Write your comment here...");
+
+    let reviewInput = document.createElement('input')
+    reviewInput.type = 'submit'
+    reviewInput.className = 'btn btn-primary'
+    formContainer.innerHTML = ''
+    formContainer.append(reviewForm)
+    reviewForm.append(reviewDiv)
+    reviewDiv.append(nickNameArea)
+    reviewDiv.append(reviewArea)
+    reviewDiv.append(reviewInput)
+
+    mainBody.append(formContainer)
 
 
+    reviewForm.addEventListener('submit', (event) => {
+        event.preventDefault()
+        let newNickName = event.target['review-nickname'].value
+        let newReviewContent = event.target['review-content'].value
+        console.log(newReviewContent, newNickName)
 
-    let reviewForm = document.querySelector('div#form-container')
-    console.log(reviewForm)
-    let formContainer = document.createElement('div')
-        formContainer.innerHTML = `<form id="new-review">
-                                    <div class="form-group">
-                                    <textarea class="form-control" name="form_name" id="review-content" rows="3"></textarea>
-                                    <input type="submit" class="btn btn-primary"></input>
-                                    </div>
-                                    </form> `
-    reviewForm.append(formContainer)
-    mainBody.append(reviewForm, allProReviews)
-    // mainBody.append(reviewForm)
-
-
-    reviewForm.addEventListener('submit', (evt) => {
-        evt.preventDefault()
-        let newReview = evt.target.form_name.value
-    fetch(`http://localhost:3000/products/${product.id}/reviews`, {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                content: newReview
-            })
-        })
-        .then(res => res.json())
-        .then((productPOJO) => {
-            showTheProductPage(productPOJO)
-        })
-        evt.target.reset()
+        
+    // fetch(`http://localhost:3000/products/${product.id}/reviews`, {
+    //         method: "POST",
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify({
+    //             content: newReviewContent
+    //             nickname: 
+    //         })
+    //     })
+    //     .then(res => res.json())
+    //     .then((productPOJO) => {
+    //         showTheProductPage(productPOJO)
+    //     })
+    //     evt.target.reset()
     })
 
 
@@ -249,7 +263,7 @@ let showTheProductPage = (product) => {
     
 
     proReview.append(reviewNickname, reviewContent, starRating)
-    allProReviews.append(proReview)
+    // allProReviews.append(proReview)
 
     
 
