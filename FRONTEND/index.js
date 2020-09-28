@@ -92,7 +92,6 @@ let cardOfProduct = (prodPojo) => {
 
 let sideBar = document.querySelector('div#mySidebar')
 sideBar.addEventListener('click', (evt) => {
-    console.log(evt.target.id)
     mainBody.innerText = ''
     showSelectedCatOfProducts(evt)  
 })
@@ -172,16 +171,102 @@ let showTheProductPage = (product) => {
     let proPrice = document.createElement('p')
     proPrice.className = 'card-text'
     proPrice.innerText = `Price: $${product.price}.00`
-    productDiv.append(cardHolder, proImage, proName, proPrice)
+
+
+    let proDescription = document.createElement('p')
+    proDescription.className = 'card-text'
+    proDescription.innerText = product.description
+
+    productDiv.append(cardHolder, proImage, proName, proPrice, proDescription)
+
+    // --------------------------- REVIEW -------------------------------------
+
+    let allProReviews = document.createElement('div')
+    allProReviews.className = 'reviews'
+    allProReviews.innerText = "Ratings & Reviews"
+    // mainBody.append(reviewForm, allProReviews)
+
+
+
+    let reviewForm = document.querySelector('div#form-container')
+    console.log(reviewForm)
+    let formContainer = document.createElement('div')
+        formContainer.innerHTML = `<form id="new-review">
+                                    <div class="form-group">
+                                    <textarea class="form-control" name="form_name" id="review-content" rows="3"></textarea>
+                                    <input type="submit" class="btn btn-primary"></input>
+                                    </div>
+                                    </form> `
+    reviewForm.append(formContainer)
+    mainBody.append(reviewForm, allProReviews)
+    // mainBody.append(reviewForm)
+
+
+    reviewForm.addEventListener('submit', (evt) => {
+        evt.preventDefault()
+        let newReview = evt.target.form_name.value
+    fetch(`http://localhost:3000/products/${product.id}/reviews`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                content: newReview
+            })
+        })
+        .then(res => res.json())
+        .then((productPOJO) => {
+            showTheProductPage(productPOJO)
+        })
+        evt.target.reset()
+    })
+
+
+
+
+
+    // ----------------------------------------------- Single reviews -----------------------------------------
+    let proReview = document.createElement('div')
+    proReview.className = 'single-review'
+
+    console.log(product.reviews)
+
+    product.reviews.forEach((review)=>{
+
+    let reviewNickname = document.createElement('h5')
+    reviewNickname.className = 'nickname'
+    reviewNickname.innerText = `Username: ${review.nickname}`
+    
+
+    let reviewContent = document.createElement('p')
+    reviewContent.className = 'content'
+    reviewContent.innerText = `Comment: ${review.content}`
+
+    let starRating = document.createElement('span')
+    starRating.className = 'stars'
+    starRating.innerText = `No. of stars: ${review.star_rating}`
 
     
+
+    proReview.append(reviewNickname, reviewContent, starRating)
+    allProReviews.append(proReview)
+
+    
+
+    })
+  
 }
 
-// }
+
+   //create a space (parent-div) to render all the pre-existing reviews of that product
+    // create a p tag that holds a single review and slap it under parent-div
+    // slap this parent-div under product div
+
+    //when a new review gets created (form), append it to the parent div.
+    //fetch(post) happens here and we update the review database.
 
 
-
-
+ 
 
 
 
