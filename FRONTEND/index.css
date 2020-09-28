@@ -83,8 +83,33 @@
     border-style: inset;
 } */
 
+.mx-auto {
+    width: 140px;
+}
+
+/* .card-deck .card {
+    margin-right: 0px;
+    margin-left: 0px
+} */
+
+.card-body .card-text {
+    width: 20vw
+}
 
 
+.card img {
+    width: 60%;
+    margin-left: 15%;
+    margin-top: 4%;
+}
+
+.card-deck {
+    margin-top: 8%;
+}
+
+.mx-auto {
+    padding-bottom: 8%;
+}
 
   body {
     font-family: "Lato", sans-serif;
@@ -165,7 +190,8 @@
   /* ----------------Container that holds everything --------------- */
   .container {
     width: 100%;
-    padding: 50px;
+    padding-right: 0!important;
+    padding-left: 40px;
     transition: margin-left 0.5s;
     margin-left: 30px;
 
