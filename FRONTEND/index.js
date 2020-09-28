@@ -569,15 +569,16 @@ let ProductsBYCategory = (CatProduct) => {
         event.preventDefault()
         let newNickName = event.target['review-nickname'].value
         let newReviewContent = event.target['review-content'].value
-        let newuser = event.target['review-user'].value
-        let newproduct = event.target['review-product'].value
-        let newRating = event.target['review-rating'].value
+        let newuser = parseInt(event.target['review-user'].value)
+        let newproduct = parseInt(event.target['review-product'].value)
+        let newRating = parseInt(event.target['review-rating'].value)
 
 
 
         console.log(`Nickname: ${newNickName}`)
         console.log(`Content: ${newReviewContent}`)
-        console.log(product)
+        console.log(typeof newuser)
+        console.log(newuser, newproduct, newRating)
 
 
 
