@@ -433,6 +433,8 @@ let ProductsBYCategory = (CatProduct) => {
     let showTheProductPage = (product) => {
         mainBody.className = 'none'
         mainBody.innerText = ''
+
+        
     
         // ------Outthere div card-deck ---------------
         let productDiv = document.createElement('div')
@@ -512,107 +514,96 @@ let ProductsBYCategory = (CatProduct) => {
         allProReviews.innerText = "Ratings & Reviews"
         // mainBody.append(reviewForm, allProReviews)
     
+        console.log(product)
+
+        const formContainer = document.querySelector('div#form-container')
+
+    let reviewForm = document.createElement('form')
+        reviewForm.id = 'new-review'
+
+    let reviewDiv = document.createElement('div')
+        reviewDiv.className = 'form-group'
+
+    let nickNameArea = document.createElement('input')
+        nickNameArea.className = 'form-control'
+        nickNameArea.id = 'review-nickname'
+        nickNameArea.setAttribute("placeholder", "Create a nickname");
+
+    let userArea = document.createElement('input')
+        userArea.className = 'form-control'
+        userArea.id = 'review-user'
+        userArea.setAttribute("placeholder", "Create a user_id");
+
+    let productArea = document.createElement('input')
+        productArea.className = 'form-control'
+        productArea.id = 'review-product'
+        productArea.setAttribute("placeholder", "Create a product_id");
     
-    
-        let reviewForm = document.querySelector('div#form-container')
-        console.log(reviewForm)
-        let formContainer = document.createElement('div')
-        
-              
-            formContainer.innerHTML = `<form class="review">
-                                        <h3>Create a Review!</h3>
-    
-                                        <input
-                                        type="text"
-                                        name="user_id"
-                                        value=""
-                                        placeholder="user_id..."
-                                        class="input-text"
-                                        />
-                                        <br />
-                                        <input
-                                        type="text"
-                                        name="product_id"
-                                        value=""
-                                        placeholder="product_id..."
-                                        class="input-text"
-                                        />
-                                        <br />
-                                        <input
-                                        type="text"
-                                        name="content"
-                                        value=""
-                                        placeholder="content..."
-                                        class="input-text"
-                                        />
-                                        <br />
-                                        <input
-                                        type="text"
-                                        name="rating"
-                                        value=""
-                                        placeholder="rating.."
-                                        class="input-text"
-                                        />
-                                        <br />
-                                        <input
-                                        type="text"
-                                        name="nickname"
-                                        value=""
-                                        placeholder="nickname..."
-                                        class="input-text"
-                                        />
-                                        <br />
-                                        <input
-                                        type="submit"
-                                        name="submit"
-                                        value="Create Review"
-                                        class="submit"
-                                        />
-                                    </form>`
-    
-    
-        console.log(reviewForm)
-        // reviewForm.append(formContainer)
-        // mainBody.append(reviewForm, allProReviews)
-        // mainBody.append(reviewForm)
-    
-    
-        reviewForm.addEventListener('submit', (evt) => {
-            evt.preventDefault()
-            let user_id = evt.target.user_id.value
-            let product_id = evt.target.product_id.value
-            let content = evt.target.content.value
-            let rating = evt.target.rating.value
-            let nickname = evt.target.nickname.value
-    
-    
-    
-            // console.log(newReview)
-        fetch(`http://localhost:3000/reviews`, {
-            // fetch(`http://localhost:3000/products/${product.id}/reviews`, {
-    
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    user_id: user_id,
-                    product_id: product_id,
-                    content: content,
-                    star_rating: rating,
-                    nickname: nickname
-                
-                })
+    let star_ratingVar = document.createElement('input')
+        star_ratingVar.className = 'form-control'
+        star_ratingVar.id = 'review-rating'
+        star_ratingVar.setAttribute("placeholder", "Create start");
+
+    let reviewArea = document.createElement('textarea')
+        reviewArea.className = 'form-control'
+        reviewArea.id = 'review-content'
+        reviewArea.setAttribute("placeholder", "Write your comment here...");
+
+    let reviewInput = document.createElement('input')
+    reviewInput.type = 'submit'
+    reviewInput.className = 'btn btn-primary'
+    formContainer.innerHTML = ''
+    formContainer.append(reviewForm)
+    reviewForm.append(reviewDiv)
+    reviewDiv.append(nickNameArea)
+    reviewDiv.append(reviewArea)
+    reviewDiv.append(star_ratingVar)
+    reviewDiv.append(productArea)
+    reviewDiv.append(userArea)
+
+
+
+    reviewDiv.append(reviewInput)
+    mainBody.append(formContainer)
+    reviewForm.addEventListener('submit', (event) => {
+        event.preventDefault()
+        let newNickName = event.target['review-nickname'].value
+        let newReviewContent = event.target['review-content'].value
+        let newuser = event.target['review-user'].value
+        let newproduct = event.target['review-product'].value
+        let newRating = event.target['review-rating'].value
+
+
+
+        console.log(`Nickname: ${newNickName}`)
+        console.log(`Content: ${newReviewContent}`)
+        console.log(product)
+
+
+
+    fetch(`http://localhost:3000/reviews`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                content: newReviewContent,
+                nickname: newNickName,
+                user_id: newuser,
+                product_id: newproduct,
+                star_rating: newRating
+
             })
-            .then(res => res.json())
-            .then((productPOJO) => {
-                showTheProductPage(productPOJO)
-            })
-            evt.target.reset()
         })
+        .then(res => res.json())
+        .then((productPOJO) => {
+            showTheProductPage(productPOJO)
+        })
+        event.target.reset()
+    })
+
     
-    
-    
+        
     
     
         // ----------------------------------------------- Single reviews -----------------------------------------
