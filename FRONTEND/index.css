@@ -1,69 +1,3 @@
-/* body {
-    margin: 0px;
-    display: flex;
-    width: 100vw;
-    height: 100vh;
-    font-family: Arial, Verdana, Sans-serif;
-}
-
-.nav {
-    width: 15%;
-    height: 100%;
-    overflow: hidden;
-    background: rgb(196, 193, 184)
-}
-
-.nav-bar-container {
-    height: auto;
-    padding: 0px 20px;
-    margin-top: 25vh;
-    font-size: 2.2vmin;
-}
-
-.nav-item {
-    margin-top: 10px;
-}
-
-.main {
-    width: 80%;
-    height: calc(100% - 40px);
-    overflow-y: auto;
-    padding: 20px;
-}
-
-.main-container {
-    width: 100%;
-    display: inline-block;
-}
-
-.top-bar {
-    width: 100%;
-    padding: 0px;
-    margin: 0px;
-    height: 40px;
-}
-
-.top-item {
-    width: auto;
-    margin-left: 30px;
-    height: 100%;
-    text-align: center;
-    float: right;
-}
-
-.card {
-    text-align: center;
-    border: grey solid 1px;
-    padding: 1rem;
-    width: 15rem;
-    height: 25rem;
-    display: inline-grid;
-    margin: 1rem 2rem;
-    box-shadow: 3px 4px #e04b52
-  } */
-
-
-
 /* --------overwritting bootstrap defaults------------------------  */
 .card {
     border: none
@@ -78,10 +12,6 @@
 .card-text {
     text-align: center;
 }
-
-/* .card-img-top { 
-    border-style: inset;
-} */
 
 .mx-auto {
     width: 140px;
@@ -125,30 +55,30 @@
     color: black;
     text-decoration: none;
 }
-  /* ----------------sidebar ----------------------------------------- */
-  .sidebar {
+/* ----------------sidebar ----------------------------------------- */
+ .sidebar {
     height: 100%;
     width: 30px;
     position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #111;
+    background-color: rgb(193, 187, 187);
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
   }
 
- #sandwich-menu {
+#sandwich-menu {
      transform: rotate(90deg);
      padding: 0 20px;
      margin-top: 140px;
      color: white;
      font-size: 40px;
      transition: 0.5s;
- }
+}
 
- .sidebar a {
+.sidebar a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
