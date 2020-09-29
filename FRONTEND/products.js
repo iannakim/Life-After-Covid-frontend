@@ -11,6 +11,9 @@ let allProReviews = document.createElement('div')
 let proReview = document.createElement('div')
 
 let allReviews = []
+let globalProduct = []
+
+let arrayofProduct = []
 
 
 // ----------------------  display all products
@@ -55,10 +58,10 @@ let showAllProductsByCat = (product) => {
 // ------------DISPLAY ONE SINGLE PRODUCT --------------------
 
 let showTheProductPage = (product) => {
-
-
-
     globalProduct = product
+
+
+    arrayofProduct.push(product)
 
     mainBody.className = 'none'
     mainBody.innerText = ''
@@ -227,9 +230,9 @@ let showTheProductPage = (product) => {
 
 
     // -----Event Listener for button add to cart --------------
-    // button.addEventListener('click', () => {
-    //     cartFunction()
-    // })
+    button.addEventListener('click', () => {
+        console.log(globalProduct.id)
+    })
 
 
     //------FOR CONNECTING FRONTEND BACKEND------------
