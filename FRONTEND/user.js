@@ -8,8 +8,8 @@ topNav.addEventListener('click', (evt) => {
     mainBody.innerText = ''
     formContainer.innerText = ''
         if (evt.target.id == "cart"){console.log("clicked cart")}
-        if (evt.target.id == "login"){showLoginForm()}
-        if (evt.target.id == "signup"){showSignUpForm()}
+        else if (evt.target.id == "login"){showLoginForm()}
+        else if (evt.target.id == "signup"){showSignUpForm()}
         else {console.log("hello")}
 })
 
