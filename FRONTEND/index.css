@@ -133,7 +133,7 @@
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #111;
+    background-color: rgb(193, 187, 187);
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
@@ -207,6 +207,11 @@
     /* padding: 16px; */
   }
 
+
+  /* -----------------Review Form ----------------------- */
+.fa-star-o {
+    padding: 4px;
+}
 
 
   /* ------------------ Heading ----------------------------------- */

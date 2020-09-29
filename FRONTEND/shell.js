@@ -22,7 +22,7 @@ function setBackToOriginal() {
 
 // ---------------------- accessing products by category from side nav bar
 
-let sideBar = document.querySelector('div#mySidebar')
+let sideBar = document.querySelector('div#mySidebarinner')
 sideBar.addEventListener('click', (evt) => {
     mainBody.innerText = ''
         if (evt.target.id == "all"){fetchAllProducts()}

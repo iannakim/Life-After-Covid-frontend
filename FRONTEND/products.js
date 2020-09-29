@@ -148,15 +148,40 @@ let showAllProductsByCat = (product) => {
         userArea.id = 'review-user'
         userArea.setAttribute("placeholder", "Create a user_id");
 
-    let productArea = document.createElement('input')
-        productArea.className = 'form-control'
-        productArea.id = 'review-product'
-        productArea.setAttribute("placeholder", "Create a product_id");
+    // let productArea = document.createElement('input')
+    //     productArea.className = 'form-control'
+    //     productArea.id = 'review-product'
+    //     productArea.setAttribute("placeholder", "Create a product_id");
     
     let star_ratingVar = document.createElement('input')
         star_ratingVar.className = 'form-control'
         star_ratingVar.id = 'review-rating'
         star_ratingVar.setAttribute("placeholder", "Create start");
+
+    let star_holder = document.createElement('div')
+        star_holder.className = 'star-holder'
+        star_holder.id = 'containerOFstars'
+
+    let star_1 = document.createElement('span')
+        star_1.className = 'fa fa-star-o'
+        star_1.id = 1
+    
+    let star_2 = document.createElement('span')
+        star_2.className = 'fa fa-star-o'
+        star_2.id = 2
+
+    let star_3 = document.createElement('span')
+        star_3.className = 'fa fa-star-o'
+        star_3.id = 3
+
+    let star_4 = document.createElement('span')
+        star_4.className = 'fa fa-star-o'
+        star_4.id = 4
+
+    let star_5 = document.createElement('span')
+        star_5.className = 'fa fa-star-o'
+        star_5.id = 5
+
 
     let reviewArea = document.createElement('textarea')
         reviewArea.className = 'form-control'
@@ -164,16 +189,26 @@ let showAllProductsByCat = (product) => {
         reviewArea.setAttribute("placeholder", "Write your comment here...");
 
     let reviewInput = document.createElement('input')
-    reviewInput.type = 'submit'
-    reviewInput.className = 'btn btn-primary'
-    formContainer.innerHTML = ''
-    formContainer.append(reviewForm)
-    reviewForm.append(reviewDiv)
-    reviewDiv.append(nickNameArea)
-    reviewDiv.append(reviewArea)
-    reviewDiv.append(star_ratingVar)
-    reviewDiv.append(productArea)
-    reviewDiv.append(userArea)
+            reviewInput.type = 'submit'
+            reviewInput.className = 'btn btn-primary'
+            formContainer.innerHTML = ''
+            formContainer.append(reviewForm)
+            reviewForm.append(reviewDiv)
+            reviewDiv.append(nickNameArea)
+            reviewDiv.append(reviewArea)
+            reviewDiv.append(star_ratingVar)
+
+            reviewDiv.append(star_holder)
+            star_holder.append(star_1, star_2, star_3, star_4, star_5)
+
+
+            reviewDiv.append(userArea)
+
+
+        // Event Listener for Stars
+        star_holder.addEventListener('click', (evt)=> {
+            console.log(evt.target.id)
+        })
 
 
 
@@ -184,7 +219,7 @@ let showAllProductsByCat = (product) => {
         let newNickName = event.target['review-nickname'].value
         let newReviewContent = event.target['review-content'].value
         let newUser = parseInt(event.target['review-user'].value)
-        let newProduct = parseInt(event.target['review-product'].value)
+        // let newProduct = parseInt(event.target['review-product'].value)
         let newRating = parseInt(event.target['review-rating'].value)
 
 
@@ -205,7 +240,7 @@ let showAllProductsByCat = (product) => {
                 content: newReviewContent,
                 nickname: newNickName,
                 user_id: newUser,
-                product_id: newProduct,
+                product_id: product.id,
                 star_rating: newRating
 
             })
