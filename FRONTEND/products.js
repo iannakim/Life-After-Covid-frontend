@@ -245,10 +245,10 @@ let showTheProductPage = (product) => {
 
     .then(res => res.json())
     .then((reviewPOJO) => {
-        renderOneSingleReview(reviewPOJO)
+        slapingReviewOnDom(reviewPOJO)
 
         // This is giving and error when consoling. typeerror product is not define
-        proReview.product.push(reviewPOJO)
+        // proReview.product.push(reviewPOJO)
         // proReview.reviews.push(reviewPOJO)
 
     })
@@ -319,11 +319,11 @@ let showTheProductPage = (product) => {
     }
 
         
-    let renderOneSingleReview = (reviewPOJO) => {
-        // console.log(reviewPOJO)
-        slapingReviewOnDom(reviewPOJO)
+    // let renderOneSingleReview = (reviewPOJO) => {
+    //     // console.log(reviewPOJO)
+    //     slapingReviewOnDom(reviewPOJO)
 
-    }
+    // }
 
     
 
