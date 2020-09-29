@@ -7,7 +7,6 @@ const mainBody = document.querySelector("div.row.row-cols-1.row-cols-md-2.row-co
 // ----------------------  display all products
 
 let showAllProductsByCat = (product) => {
-    mainBody.className = 'row row-cols-1 row-cols-md-2 row-cols-lg-3'
 
     let productDiv = document.createElement('div')
     productDiv.className = "col mb-4"

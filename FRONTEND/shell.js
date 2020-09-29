@@ -1,29 +1,8 @@
-// ---------------------- side nav bar elements
 
-function openNav() {
-    document.getElementById("mySidebar").style.width = "250px";
-    document.getElementById("sandwich-menu").style.display = 'none'
-    // document.getElementById("main").style.marginLeft = "250px";
-}
+// ---------------------- accessing products by category from nav bar
 
-function slimNav() {
-    document.getElementById("mySidebar").style.width = "30px";
-    document.getElementById("sandwich-menu").style.display = 'block'
-    // document.getElementById("main").style.marginLeft= "10px";
-    document.querySelector(".container").style.marginLeft = "250px";
-}
-
-function setBackToOriginal() {
-    document.querySelector(".container").style.marginLeft = "30px";
-}
-
-
-
-
-// ---------------------- accessing products by category from side nav bar
-
-let sideBar = document.querySelector('div#mySidebarinner')
-sideBar.addEventListener('click', (evt) => {
+let navBar = document.querySelector('div#nav-bar-items')
+navBar.addEventListener('click', (evt) => {
     mainBody.innerText = ''
         if (evt.target.id == "all"){fetchAllProducts()}
         else {fetchProductsByCat(evt.target.id)}
