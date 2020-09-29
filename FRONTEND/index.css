@@ -134,6 +134,15 @@
     font-family: "Lato", sans-serif;
   }
   
+
+
+#image_in_glass {
+  width: 70%;
+  position: absolute;
+}
+
+
+
 /* ----------------------top-navbar ----------------------------- */
 .top-bar {
     float: right;

@@ -64,10 +64,12 @@ let showTheProductPage = (product) => {
     // -----card div to hold just the image ---------
     let cardHolder = document.createElement("div")
         cardHolder.className = 'card'
+        cardHolder.id = 'image-holder'
 
     let proImage = document.createElement('img')
         proImage.alt = product.name
         proImage.src = product.image
+        proImage.id = 'image_in_glass'
 
     // ---card div to hold all the info regarding the product----
     let reviewContHolder = document.createElement('div')
@@ -125,9 +127,12 @@ let showTheProductPage = (product) => {
         reviewContHolder.append(cardOfProductInfo)
         reviewProduct.append(rating, nameOfProduct, price, quantity, buttonHolder, description, contentDescription)
         productDiv.append( cardHolder, reviewContHolder)
+
+
     
     
     // ---------------- REVIEWS HOLDER-------------------
+        // allProReviews.innerText = ''
     
         allProReviews.className = 'reviews'
         let ratingAndReview = document.createElement('h5')
@@ -258,10 +263,9 @@ let showTheProductPage = (product) => {
 
      // ----------------------  DISPLAYS ALL REVIEWS UNDER THE FORM!-------------------------
 
-
     // ------div for all reviews  ---------
     let singleReviewCard = (product) => {
-        console.log(product)
+        // console.log(product)
         proReview.className = 'single-review'
         displayALLReviews(product)
     }
@@ -274,6 +278,8 @@ let showTheProductPage = (product) => {
     }
 
     let slapingReviewOnDom = (review) => {
+        // allProReviews.innerText = ''
+        // proReview.innerText = ''
 
         let reviewHolderSection = document.createElement('div')
             reviewHolderSection.className = 'card-deck'
