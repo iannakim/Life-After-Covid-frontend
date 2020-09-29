@@ -1,26 +1,24 @@
 
 const topNav = document.querySelector("div.top-bar")
+const formContainer = document.querySelector("div#sign-up-form")
 let currentUser;
 
 // ------------------------------------------------ top nav bar event listener
 topNav.addEventListener('click', (evt) => {
     mainBody.innerText = ''
+    formContainer.innerText = ''
         if (evt.target.id == "cart"){console.log("clicked cart")}
-        else if (evt.target.id == "login"){console.log("clicked login")}
-        else if (evt.target.id == "signup"){createUser()}
+        if (evt.target.id == "login"){showLoginForm()}
+        if (evt.target.id == "signup"){showSignUpForm()}
         else {console.log("hello")}
 })
 
 
 // ------------------------------------------------ create user
 
-let createUser = () => {
-
-    const formContainer = document.querySelector("div#sign-up-form");
+let showSignUpForm = () => {
 
     let signUpForm = document.createElement('form'); // Create New Element Form
-    // signUpForm.setAttribute("action", ""); // Setting Action Attribute on Form
-    // signUpForm.setAttribute("method", "post"); // Setting Method Attribute on Form
     formContainer.appendChild(signUpForm);
     
     let heading = document.createElement('h2'); // Heading of Form
@@ -116,17 +114,19 @@ let createUser = () => {
     let linebreak9 = document.createElement('br'); // space
     signUpForm.appendChild(linebreak9);
     
-    let submitBtn = document.createElement('input'); // Append Submit Button
-    submitBtn.setAttribute("type", "submit");
-    submitBtn.setAttribute("name", "dsubmit");
-    submitBtn.setAttribute("value", "Submit");
+    let submitBtn = document.createElement('button'); // Append Submit Button
+    submitBtn.type = "submit"
+    submitBtn.className = "btn btn-primary"
+    submitBtn.innerText = "Create Account"
     signUpForm.appendChild(submitBtn);
 
 
     mainBody.append(formContainer)
+    signUpForm.addEventListener('submit', handleSignUpForm)
+    
+}
 
-    // submit form event listener //
-    signUpForm.addEventListener('submit', (event) => {
+    let handleSignUpForm = (event) => {
     event.preventDefault()
         let newName = event.target["fullname"].value
         let newUsername = event.target["username"].value
@@ -154,12 +154,12 @@ let createUser = () => {
         })
         .then(res => res.json())
         .then((newUserObj) =>{
-            currentUser = newUserObj  //becomes the current user set in global var
+            currentUser = newUserObj  // assigns this user to currentUser global var
             console.log(currentUser)
         })
         event.target.reset()
-    })// end of form event listener
-} //end of create user method
+    }// end of handleSignUpForm
+
 
 
 
@@ -168,4 +168,75 @@ let createUser = () => {
 // ------------------------------------------------ log in user
 
 
+let showLoginForm = () => {
+    
 
+    let logInForm = document.createElement('form'); // Create New Element Form
+    formContainer.appendChild(logInForm);
+    
+    let heading = document.createElement('h2'); // Heading of Form
+        heading.innerText = "Welcome Back! Log in: ";
+        logInForm.appendChild(heading);
+    
+    let line = document.createElement('hr'); // linebreak
+        logInForm.appendChild(line);
+    
+    let linebreak = document.createElement('br'); // space
+        logInForm.appendChild(linebreak);
+
+    let usernameLabel = document.createElement("label")
+        usernameLabel.innerText = "Username"
+        logInForm.appendChild(usernameLabel);
+
+    let usernameInput = document.createElement("input")
+        usernameInput.type = "text"
+        usernameInput.id = "username"
+        usernameInput.placeholder = "Enter Username"
+        usernameInput.autocomplete = "off"
+        logInForm.appendChild(usernameInput);
+
+    let linebreak1 = document.createElement('br'); // space
+        logInForm.appendChild(linebreak1);
+    
+    let lastline = document.createElement('hr'); // linebreak
+        logInForm.appendChild(lastline);
+    
+    let linebreak3 = document.createElement('br'); // space
+        logInForm.appendChild(linebreak3);
+    
+    let submitButton = document.createElement('button')
+        submitButton.type = "submit"
+        submitButton.className = "btn btn-primary"
+        submitButton.innerText = "Login"
+        logInForm.append(submitButton)
+  
+
+    logInForm.addEventListener("submit", handleLoginForm)
+
+}   
+
+let handleLoginForm = (evt) => {
+    evt.preventDefault()
+    let userName = evt.target["username"].value
+
+    fetch("http://localhost:3000/login", {
+        method: "POST",
+        headers: {
+            "content-type": "application/json"
+        },
+        body: JSON.stringify({
+            username: userName
+        })
+    })
+        .then(res => res.json())
+        .then(response => {
+ 
+            if(response.id){
+                console.log(response)
+                currentUser = response;
+            } else {
+                console.error(response)
+            }
+
+        })
+}
