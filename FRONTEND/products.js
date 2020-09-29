@@ -235,6 +235,10 @@ let showTheProductPage = (product) => {
 
     //------FOR CONNECTING FRONTEND BACKEND------------
 
+    reviewDiv.append(reviewInput)
+    mainBody.append(formContainer)
+
+    
     reviewForm.addEventListener('submit', (event) => {
         event.preventDefault()
         let newNickName = event.target['review-nickname'].value

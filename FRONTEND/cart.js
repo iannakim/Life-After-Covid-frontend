@@ -1,4 +1,3 @@
-
 let ProductSelectedToAddToCart = (event) => {
 
 
@@ -153,4 +152,3 @@ let renderCartPage = () => {
 let cartFunction = () => {
     console.log("I am coming from cart.js")
     }
-    
