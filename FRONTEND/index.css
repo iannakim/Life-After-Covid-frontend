@@ -79,12 +79,31 @@
     text-align: center;
 }
 
-/* .card-img-top { 
-    border-style: inset;
-} */
+#review-holder {
+  margin-top: 0!important;
+  /* border-style: ridge; */
+  border: .2px ridge gray;
+  border-radius: 5px; 
+}
+
+#rating-star-content {
+  margin-bottom: 0!important
+}
+
+#nickname {
+  padding-top: 3%;
+  margin-left: 3%;
+}
 
 .mx-auto {
     width: 140px;
+}
+
+#ratingAndReview {
+  text-align: center;
+    font-size: 26px;
+    padding-top: 50px;
+    padding-bottom: 35px;
 }
 
 /* .card-deck .card {
@@ -210,7 +229,7 @@
 
   /* -----------------Review Form ----------------------- */
 .fa-star-o {
-    padding: 4px;
+    padding: 0 4px;
 }
 
 
