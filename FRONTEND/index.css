@@ -63,6 +63,19 @@
   } */
 
 
+/* -----------------CART PAGE ---------------------------- */
+.cart-holder {
+  margin-left: 10%;
+}
+
+.total-info {
+  margin-left: 30px
+}
+
+#horizontal-line {
+  border-bottom: 1px solid #111;
+}
+
 
 /* --------overwritting bootstrap defaults------------------------  */
 .card {
