@@ -58,10 +58,10 @@ let showAllProductsByCat = (product) => {
 // ------------DISPLAY ONE SINGLE PRODUCT --------------------
 
 let showTheProductPage = (product) => {
+
     globalProduct = product
 
 
-    arrayofProduct.push(product)
 
     mainBody.className = 'none'
     mainBody.innerText = ''
@@ -230,9 +230,7 @@ let showTheProductPage = (product) => {
 
 
     // -----Event Listener for button add to cart --------------
-    button.addEventListener('click', () => {
-        console.log(globalProduct.id)
-    })
+    button.addEventListener('click', ProductSelectedToAddToCart) 
 
 
     //------FOR CONNECTING FRONTEND BACKEND------------

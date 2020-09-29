@@ -1,3 +1,35 @@
+
+let ProductSelectedToAddToCart = (event) => {
+
+
+    fetch(`http://localhost:3000/addProducts`, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            cart_id: 1,
+            product_id: globalProduct.id,
+            quantity: 1
+
+        })
+    })
+
+    .then(res => res.json())
+    .then((addedProduct) => {
+        console.log(addedProduct)
+
+        // add logic for the cart count at top in here
+        // renderCartPage
+    })
+
+    event.target.reset()
+}
+
+
+
+
+
 let cartNav = document.querySelector('#cart-nav')
 let mainCartContainer = document.querySelector('div.cart-holder')
 cartNav.addEventListener('click', () => {
@@ -6,6 +38,15 @@ cartNav.addEventListener('click', () => {
 
 
 let renderCartPage = () => {
+
+
+    fetch('http://localhost:3000/carts')
+    .then(res => res.json())
+    .then(console.log)
+
+
+
+
     mainBody.innerText = ''
     mainCartContainer.innerText = ''
 
@@ -28,6 +69,8 @@ let renderCartPage = () => {
         let singularProduct = document.createElement('div')
             singularProduct.className = 'singular-product'
 
+
+        // -----Holder for each product, this card is the looping creation ------
         let cardGroup = document.createElement('div')
             cardGroup.className = 'card-group'
             cardGroup.id = 'product-info'
