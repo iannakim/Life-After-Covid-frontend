@@ -209,10 +209,11 @@ let showAllProductsByCat = (product) => {
             console.log(evt.target.id)
         })
 
-
-
     reviewDiv.append(reviewInput)
     mainBody.append(formContainer)
+
+
+
     reviewForm.addEventListener('submit', (event) => {
         event.preventDefault()
         let newNickName = event.target['review-nickname'].value
@@ -220,13 +221,6 @@ let showAllProductsByCat = (product) => {
         let newUser = parseInt(event.target['review-user'].value)
         // let newProduct = parseInt(event.target['review-product'].value)
         let newRating = parseInt(event.target['review-rating'].value)
-
-
-
-        // console.log(`Nickname: ${newNickName}`)
-        // console.log(`Content: ${newReviewContent}`)
-        // console.log(typeof newUser)
-        // console.log(newUser, newProduct, newRating)
 
 
 
