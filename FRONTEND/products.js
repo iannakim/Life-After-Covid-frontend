@@ -1,17 +1,16 @@
 
 const categories_url = "http://localhost:3000/categories"
+// const categories_url = `http://localhost:3000/product/${product.id}/reviews`
+
 const mainBody = document.querySelector("div.row.row-cols-1.row-cols-md-2.row-cols-lg-3")
 
 let formContainer = document.querySelector('div#form-container')
-
 
 let newRating = []
 let allProReviews = document.createElement('div')
 let proReview = document.createElement('div')
 
 let allReviews = []
-let globalProduct = []
-
 
 
 // ----------------------  display all products
@@ -43,6 +42,7 @@ let showAllProductsByCat = (product) => {
 
     // // ----EVENTLISTENER----- // //
     productDiv.addEventListener('click', (evt) => {
+        productCurrentlyInDisplay = product
     showTheProductPage(product)
     })
 
@@ -51,6 +51,9 @@ let showAllProductsByCat = (product) => {
 // ------------DISPLAY ONE SINGLE PRODUCT --------------------
 
 let showTheProductPage = (product) => {
+
+
+
     globalProduct = product
 
     mainBody.className = 'none'
@@ -130,9 +133,10 @@ let showTheProductPage = (product) => {
 
 
     
-    
     // ---------------- REVIEWS HOLDER-------------------
-        // allProReviews.innerText = ''
+        // ratingAndReview.innerText = ''
+        allProReviews.innerText = ''
+
     
         allProReviews.className = 'reviews'
         let ratingAndReview = document.createElement('h5')
@@ -141,9 +145,6 @@ let showTheProductPage = (product) => {
         allProReviews.append(ratingAndReview)
 
         singleReviewCard(product)
-
-
-
 
     // ------------Review Form --------------------------
 
@@ -246,11 +247,6 @@ let showTheProductPage = (product) => {
     .then(res => res.json())
     .then((reviewPOJO) => {
         slapingReviewOnDom(reviewPOJO)
-
-        // This is giving and error when consoling. typeerror product is not define
-        // proReview.product.push(reviewPOJO)
-        // proReview.reviews.push(reviewPOJO)
-
     })
 
     // evt.target does not reset the form back to no input for stars
@@ -265,21 +261,29 @@ let showTheProductPage = (product) => {
 
     // ------div for all reviews  ---------
     let singleReviewCard = (product) => {
-        // console.log(product)
         proReview.className = 'single-review'
         displayALLReviews(product)
     }
 
     // ---------Review Handlers----------------- 
     let displayALLReviews = (product) => {
-        product.reviews.forEach((review)=>{
-            slapingReviewOnDom(review)
+
+
+        const categories_url_review = `http://localhost:3000/products/${product.id}`
+        fetch(categories_url_review)
+        .then(res => res.json())
+        .then(productPOJO => {
+            productPOJO.reviews.forEach(slapingReviewOnDom)
+
         })
+        
+        proReview.innerText = ''
+        // product.reviews.forEach((review)=>{
+        //     slapingReviewOnDom(review)
+        // })
     }
 
     let slapingReviewOnDom = (review) => {
-        // allProReviews.innerText = ''
-        // proReview.innerText = ''
 
         let reviewHolderSection = document.createElement('div')
             reviewHolderSection.className = 'card-deck'
@@ -319,13 +323,9 @@ let showTheProductPage = (product) => {
     }
 
         
-    // let renderOneSingleReview = (reviewPOJO) => {
-    //     // console.log(reviewPOJO)
-    //     slapingReviewOnDom(reviewPOJO)
-
-    // }
 
     
+
 
 
 
