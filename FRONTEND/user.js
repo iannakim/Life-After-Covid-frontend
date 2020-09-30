@@ -169,7 +169,6 @@ let showSignUpForm = () => {
 
 
 let showLoginForm = () => {
-    
 
     let logInForm = document.createElement('form'); // Create New Element Form
     formContainer.appendChild(logInForm);
