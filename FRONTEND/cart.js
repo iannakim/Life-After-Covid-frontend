@@ -1,54 +1,68 @@
-let ProductSelectedToAddToCart = (event) => {
+let currentCart;
 
 
-    fetch(`http://localhost:3000/addProducts`, {
+let checkIfCartExists = (user) => {
+
+    let userLoggingIn = user
+
+    fetch("http://localhost:3000/findcart", {
         method: "POST",
         headers: {
-            'Content-Type': 'application/json'
+            "content-type": "application/json"
         },
         body: JSON.stringify({
-            cart_id: 1,
-            product_id: globalProduct.id,
-            quantity: 1
-
+            user_id: userLoggingIn.id
         })
     })
-
-    .then(res => res.json())
-    .then((addedProduct) => {
-        console.log('This is a list of all added products:')
-        console.log(addedProduct)
-
-        // add logic for the cart count at top in here
-        // renderCartPage
-    })
-
-    // event.target.reset()
+        .then(res => res.json())
+        .then(cart => {
+            if(cart.id){
+                console.log(cart, "cart exists!")
+                currentCart = cart;
+                //redirect user to homepage
+            } else {
+                createCartForUser(userLoggingIn)
+            }
+        })
 }
 
 
+let createCartForUser = (user) => {
+
+    let userLoggingIn = user
+
+    fetch(`http://localhost:3000/cart`, {
+        method: "POST",
+        headers: { 
+            "content-type": "application/json" 
+        },
+        body: JSON.stringify({
+            user_id: userLoggingIn.id
+        })
+    })
+        .then(res => res.json())
+        .then((cart) => {
+            console.log(cart, "cart exists!")
+            currentCart = cart;
+            //redirect user to homepage
+        })
+
+}
 
 
+// ---------------------------------------------------------------------------
 
-let cartNav = document.querySelector('#cart')
-let mainCartContainer = document.querySelector('div.cart-holder')
-cartNav.addEventListener('click', () => {
-    renderCartPage()
-})
+
 
 
 let renderCartPage = () => {
 
+    mainBody.innerText = ''
 
     fetch('http://localhost:3000/carts')
     .then(res => res.json())
     .then(console.log)
 
-
-
-
-    mainBody.innerText = ''
-    // mainCartContainer.innerText = ''
 
     let basketTitle = document.createElement('h5')
         basketTitle.clasName = 'basket-title'
