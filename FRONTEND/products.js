@@ -162,10 +162,10 @@ let showTheProductPage = (product) => {
         nickNameArea.id = 'review-nickname'
         nickNameArea.setAttribute("placeholder", "Create a nickname");
 
-    let userArea = document.createElement('input')
-        userArea.className = 'form-control'
-        userArea.id = 'review-user'
-        userArea.setAttribute("placeholder", "Create a user_id");
+    // let userArea = document.createElement('input')
+    //     userArea.className = 'form-control'
+    //     userArea.id = 'review-user'
+    //     userArea.setAttribute("placeholder", "Create a user_id");
 
     let star_holder = document.createElement('div')
         star_holder.className = 'star-holder'
@@ -210,7 +210,9 @@ let showTheProductPage = (product) => {
 
     formContainer.append(reviewForm)
     reviewForm.append(reviewDiv)
-    reviewDiv.append(nickNameArea, reviewArea, rateThisProduct, star_holder, userArea)
+    // reviewDiv.append(nickNameArea, reviewArea, rateThisProduct, star_holder, userArea)
+    reviewDiv.append(nickNameArea, reviewArea, rateThisProduct, star_holder)
+
     star_holder.append(star_1, star_2, star_3, star_4, star_5)
 
 
@@ -231,10 +233,17 @@ mainBody.append(formContainer)
 //------FOR CONNECTING FRONTEND BACKEND------------
 
     reviewForm.addEventListener('submit', (event) => {
+
+        if(!currentUser) {
+                alert('Not login')
+
+        }
+
+            errorMessage.innerText = "User not log in "
         event.preventDefault()
         let newNickName = event.target['review-nickname'].value
         let newReviewContent = event.target['review-content'].value
-        let newUser = parseInt(event.target['review-user'].value)
+        // let newUser = parseInt(event.target['review-user'].value)
 
     fetch(`http://localhost:3000/reviews`, {
         method: "POST",
@@ -244,7 +253,8 @@ mainBody.append(formContainer)
         body: JSON.stringify({
             content: newReviewContent,
             nickname: newNickName,
-            user_id: newUser,
+            // user_id: newUser,
+            user_id: currentUser.id,
             product_id: product.id,
             star_rating: newRating
         })
