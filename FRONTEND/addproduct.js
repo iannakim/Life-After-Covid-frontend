@@ -15,9 +15,13 @@ let ProductSelectedToAddToCart = (event) => {
 
     .then(res => res.json())
     .then((addedProduct) => {
-        console.log('This is a list of all added products:')
-        console.log(addedProduct)
-        console.log(currentCart)
+        renderCartPage(addedProduct)
+
+
+
+        // console.log('This is a list of all added products:')
+        // console.log(addedProduct)
+        // console.log(currentCart)
         // add logic for the cart count at top in here
         // renderCartPage
     })
@@ -26,7 +30,7 @@ let ProductSelectedToAddToCart = (event) => {
 
 
 let cartNav = document.querySelector('#cart')
-let mainCartContainer = document.querySelector('div.cart-holder')
+// let mainCartContainer = document.querySelector('div.cart-holder')  
 cartNav.addEventListener('click', () => {
     renderCartPage()
 })
