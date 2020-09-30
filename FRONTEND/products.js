@@ -5,11 +5,15 @@ const mainBody = document.querySelector("div.row.row-cols-1.row-cols-md-2")
 let formHolder = document.querySelector('div#form-container')
 let allProReviews = document.createElement('div')
 let proReview = document.createElement('div')
+let chooseQuantity = document.createElement('select')
+
+let valueSelectedFromQuantity = 1
 
 let newRating = []
 let allReviews = []
 let globalProduct = []
 let arrayofProduct = []
+
 
 // ----------------------  display all products
 
@@ -101,9 +105,15 @@ let showTheProductPage = (product) => {
         priceContent.className = 'text-small'
         priceContent.innerText = `$ ${product.price}.00`
 
+    //---- Adding a select dropdown for quantity on product ------
+            // using the div of hooseQuantity I can append quantity,
+            // and invoke -Creating the dropDown Selection for quantity-
+    //   -------------------------------------------------------
+
     let quantity = document.createElement('p')
         quantity.className = 'card-title'
-        quantity.innerText = 'qty: _____'
+        quantity.innerText = 'Quantity: '
+
 
     let buttonHolder = document.createElement('div')
         buttonHolder.className = 'mx-auto'
@@ -124,6 +134,7 @@ let showTheProductPage = (product) => {
         productDescription.className = 'text-muted'
         productDescription.innerText = product.description      
 
+        quantity.append(chooseQuantity)
         buttonHolder.append(button)
         price.append(priceContent)
         cardHolder.append(proImage)
@@ -349,16 +360,14 @@ let slapingReviewOnDom = (review) => {
 
     
 
-
-
-
-
-
-
-
-
-
-
+//  Creating the dropDown Selection for quantity
+    for(var i = 1; i <=10; i++){
+        let option = document.createElement("OPTION");
+        chooseQuantity.options.add(option);
+        option.text = i;
+        option.value = i;
+    }
+// -------------------------------------------------
 
 
 

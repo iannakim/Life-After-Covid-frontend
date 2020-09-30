@@ -153,3 +153,20 @@ let renderCartPage = () => {
 let cartFunction = () => {
     console.log("I am coming from cart.js")
     }
+
+
+
+
+
+
+
+    chooseQuantity.addEventListener('change', (evt) => {
+        valueSelectedFromQuantity = evt.target.value
+        console.log(evt.target.value)
+        
+    })
+
+
+    
+
+    console.log(valueSelectedFromQuantity)
