@@ -243,7 +243,7 @@ mainBody.append(formContainer)
     reviewForm.addEventListener('submit', (event) => {
 
         if(!currentUser) {
-                alert('Not login')
+                alert('Please Log In First')
 
         }
 

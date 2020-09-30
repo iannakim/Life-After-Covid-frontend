@@ -141,7 +141,7 @@ padding-top: 200px;
 }
 
 .hide {
-display: none!important;
+display: none;
 }
 
 @media only screen and (max-width: 520px) {

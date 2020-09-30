@@ -17,7 +17,7 @@ let checkIfCartExists = (user) => {
         .then(res => res.json())
         .then(cart => {
             if(cart.id){
-                console.log(cart, "cart exists!")
+                console.log(cart, "cart already exists!")
                 currentCart = cart;
                 //redirect user to homepage
             } else {
@@ -42,7 +42,7 @@ let createCartForUser = (user) => {
     })
         .then(res => res.json())
         .then((cart) => {
-            console.log(cart, "cart exists!")
+            console.log(cart, "cart created!")
             currentCart = cart;
             //redirect user to homepage
         })

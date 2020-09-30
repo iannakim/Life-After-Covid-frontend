@@ -1,17 +1,6 @@
 
-const topNav = document.querySelector("div.top-bar")
-const formContainer = document.querySelector("div#sign-up-form")
 let currentUser;
-
-// ------------------------------------------------ top nav bar event listener
-topNav.addEventListener('click', (evt) => {
-    mainBody.innerText = ''
-    formContainer.innerText = ''
-        if (evt.target.id == "cart"){renderCartPage()}
-        if (evt.target.id == "login"){showLoginForm()}
-        else if (evt.target.id == "signup"){showSignUpForm()}
-        else {console.log("hello")}
-})
+const formContainer = document.querySelector("div#sign-up-form")
 
 
 // ------------------------------------------------ create user
@@ -174,7 +163,7 @@ let showLoginForm = () => {
     formContainer.appendChild(logInForm);
     
     let heading = document.createElement('h2'); // Heading of Form
-        heading.innerText = "Welcome Back! Log in: ";
+        heading.innerText = "Log in";
         logInForm.appendChild(heading);
     
     let line = document.createElement('hr'); // linebreak
