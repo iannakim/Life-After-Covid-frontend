@@ -1,5 +1,6 @@
 let currentCart;
 
+    let productQuantity = parseInt(valueSelectedFromQuantity)
 
 let checkIfCartExists = (user) => {
 
@@ -167,3 +168,10 @@ let renderCartPage = () => {
 let cartFunction = () => {
     console.log("I am coming from cart.js")
     }
+
+
+
+
+
+
+
