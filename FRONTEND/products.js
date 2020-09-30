@@ -7,7 +7,7 @@ let allProReviews = document.createElement('div')
 let proReview = document.createElement('div')
 let chooseQuantity = document.createElement('select')
 
-let valueSelectedFromQuantity = "1"
+let valueSelectedFromQuantity;
 
 let newRating = []
 let allReviews = []
@@ -248,6 +248,7 @@ mainBody.append(formContainer)
     button.addEventListener('click', ProductSelectedToAddToCart) //go to addproduct js
 
 
+
 //------FOR CONNECTING FRONTEND BACKEND------------
 
     reviewForm.addEventListener('submit', (event) => {
@@ -293,7 +294,7 @@ mainBody.append(formContainer)
 
 
 chooseQuantity.addEventListener('change', (evt) => {
-    valueSelectedFromQuantity = evt.target.value
+    valueSelectedFromQuantity = parseInt(evt.target.value)
 })
 
 

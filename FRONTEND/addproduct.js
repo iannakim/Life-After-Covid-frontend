@@ -1,5 +1,11 @@
+
+
+
 let ProductSelectedToAddToCart = (event) => {
 
+    if (valueSelectedFromQuantity == null){
+        valueSelectedFromQuantity == 1
+    }
 
     fetch(`http://localhost:3000/addProducts`, {
         method: "POST",
@@ -9,12 +15,13 @@ let ProductSelectedToAddToCart = (event) => {
         body: JSON.stringify({
             cart_id: currentCart.id,
             product_id: globalProduct.id,
-            quantity: productQuantity
+            quantity: valueSelectedFromQuantity
         })
     })
 
     .then(res => res.json())
     .then((addedProduct) => {
+        console.log(addedProduct)
         renderCartPage(addedProduct)
 
 
