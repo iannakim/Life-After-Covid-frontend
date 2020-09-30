@@ -219,7 +219,17 @@ let showTheProductPage = (product) => {
    // ---Event Listener for Stars -----------
    star_holder.addEventListener('click', (rating)=> {
     newRating = rating.target.id
+    console.log('click')
+    console.log(newRating)
+    if (rating.target.style.color = 'red ') {
+    console.log('hi red')
     rating.target.style.color = 'red'
+    
+    }
+    else 
+    {rating.target.style.color = 'inherit' }
+    // rating.target.style.color = 'red' ? rating.target.style.color = 'black' : rating.target.style.color = 'red'
+
 })
 
 reviewDiv.append(reviewInput)
