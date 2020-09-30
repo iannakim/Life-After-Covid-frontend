@@ -1,12 +1,23 @@
 
 const categories_url = "http://localhost:3000/categories"
-const mainBody = document.querySelector("div.row.row-cols-1.row-cols-md-2.row-cols-lg-3")
+const mainBody = document.querySelector("div.row.row-cols-1.row-cols-md-2")
 
+let formHolder = document.querySelector('div#form-container')
+let allProReviews = document.createElement('div')
+let proReview = document.createElement('div')
 
+let newRating = []
+let allReviews = []
+let globalProduct = []
+let arrayofProduct = []
 
 // ----------------------  display all products
 
 let showAllProductsByCat = (product) => {
+    initialPage.innerHTML = ""
+    // mainCartContainer.innerText = ''
+
+    mainBody.className = 'row row-cols-1 row-cols-md-2 row-cols-lg-3'
 
     let productDiv = document.createElement('div')
     productDiv.className = "col mb-4"
@@ -29,84 +40,89 @@ let showAllProductsByCat = (product) => {
     let proPrice = document.createElement('p')
     proPrice.className = 'card-text'
     proPrice.innerText = `Price: $${product.price}.00`
+
     productDiv.append(cardHolder, proImage, proName, proPrice)
 
     // // EVENTLISTENER // //
     productDiv.addEventListener('click', (evt) => {
+        productCurrentlyInDisplay = product
     showTheProductPage(product)
     })
 
-
 }
 
-// ----------------------  display single product
+// ------------DISPLAY ONE SINGLE PRODUCT --------------------
 
-    let showTheProductPage = (product) => {
-        mainBody.className = 'none'
-        mainBody.innerText = ''
+let showTheProductPage = (product) => {
 
-        
+    globalProduct = product
+
+    mainBody.className = 'none'
+    mainBody.innerText = ''
     
-        // ------Outthere div card-deck ---------------
-        let productDiv = document.createElement('div')
+    // ------Outthere div card-deck ---------------
+    let productDiv = document.createElement('div')
         productDiv.className = "card-deck"
         mainBody.append(productDiv)
     
-        // ------card div to hold just the image ---------
-        let cardHolder = document.createElement("div")
-            cardHolder.className = 'card'
+    // ------card div to hold just the image ---------
+    let cardHolder = document.createElement("div")
+        cardHolder.className = 'card'
+        cardHolder.id = 'image-holder'
 
-        let proImage = document.createElement('img')
-            proImage.alt = product.name
-            proImage.src = product.image
+    let proImage = document.createElement('img')
+        proImage.alt = product.name
+        proImage.src = product.image
+        proImage.id = 'image_in_glass'
 
-        // ---card div to hold all the info regarding the product----
-        let reviewContHolder = document.createElement('div')
-            reviewContHolder.className = 'reviewContainer'
 
-        let cardOfProductInfo = document.createElement('div')
-            cardOfProductInfo.className = 'card'  
+    // ---card div to hold all the info regarding the product----
+    let reviewContHolder = document.createElement('div')
+        reviewContHolder.className = 'reviewContainer'
 
-        let reviewProduct = document.createElement('div')
-            reviewProduct.className = 'card-body'
+    let cardOfProductInfo = document.createElement('div')
+        cardOfProductInfo.className = 'card'  
 
-        let rating = document.createElement('p')
-            rating.className = 'card-title'
-            rating.innerText = 'Rating stars'
+    let reviewProduct = document.createElement('div')
+        reviewProduct.className = 'card-body'
 
-        let nameOfProduct = document.createElement('h5')
-            nameOfProduct.className = 'card-title'
-            nameOfProduct.innerText = product.name
+    let rating = document.createElement('p')
+        rating.className = 'card-title'
+        rating.innerText = 'Rating stars'
 
-        let price = document.createElement('p')
-            price.className = 'card-title'
+    let nameOfProduct = document.createElement('h5')
+        nameOfProduct.className = 'card-title'
+        nameOfProduct.innerText = product.name
 
-        let priceContent = document.createElement('small')
-            priceContent.className = 'text-small'
-            priceContent.innerText = `$ ${product.price}.00`
+    let price = document.createElement('p')
+        price.className = 'card-title'
 
-        let quantity = document.createElement('p')
-            quantity.className = 'card-title'
-            quantity.innerText = 'qty: _____'
+    let priceContent = document.createElement('small')
+        priceContent.className = 'text-small'
+        priceContent.innerText = `$ ${product.price}.00`
 
-        let buttonHolder = document.createElement('div')
-            buttonHolder.className = 'mx-auto'
+    let quantity = document.createElement('p')
+        quantity.className = 'card-title'
+        quantity.innerText = 'qty: _____'
 
-        let button = document.createElement('button')
-            button.className = '.btn btn-secondary btn-lg'
-            button.type = 'button'
-            button.innerText = 'Add to Cart'
+    let buttonHolder = document.createElement('div')
+        buttonHolder.className = 'mx-auto'
 
-        let description = document.createElement('h5')
-            description.className = 'card-title'
-            description.innerText = 'Product Description:'
+    let button = document.createElement('button')
+        button.className = '.btn btn-secondary btn-lg'
+        button.type = 'button'
+        button.innerText = 'Add to Cart'
 
-        let contentDescription = document.createElement('p')
-            contentDescription.className = 'card-text'
+    let description = document.createElement('h5')
+        description.className = 'card-title'
+        description.innerText = 'Product Description:'
 
-        let productDescription = document.createElement('small')
-            productDescription.className = 'text-muted'
-            productDescription.innerText = product.description      
+    let contentDescription = document.createElement('p')
+        contentDescription.className = 'card-text'
+
+    let productDescription = document.createElement('small')
+        productDescription.className = 'text-muted'
+        productDescription.innerText = product.description      
 
         buttonHolder.append(button)
         price.append(priceContent)
@@ -116,23 +132,27 @@ let showAllProductsByCat = (product) => {
         reviewContHolder.append(cardOfProductInfo)
         reviewProduct.append(rating, nameOfProduct, price, quantity, buttonHolder, description, contentDescription)
         productDiv.append( cardHolder, reviewContHolder)
-    
-        
-        
-        
-        
-        
-        // ---------------- REVIEW -------------------
-    
-        let allProReviews = document.createElement('div')
-        allProReviews.className = 'reviews'
-        allProReviews.innerText = "Ratings & Reviews"
-        // mainBody.append(reviewForm, allProReviews)
 
-        const formContainer = document.querySelector('div#form-container')
+    
+    // ---------------- REVIEWS HOLDER-------------------
+        // ratingAndReview.innerText = ''
+        allProReviews.innerText = ''
+
+    
+        allProReviews.className = 'reviews'
+        let ratingAndReview = document.createElement('h5')
+            ratingAndReview.id ='ratingAndReview'
+            ratingAndReview.innerText = "Ratings & Reviews"
+        allProReviews.append(ratingAndReview)
+
+        singleReviewCard(product)
+
+
+        // ------------Review Form --------------------------
+
 
     let reviewForm = document.createElement('form')
-        reviewForm.id = 'new-review'
+    reviewForm.id = 'new-review'
 
     let reviewDiv = document.createElement('div')
         reviewDiv.className = 'form-group'
@@ -147,24 +167,18 @@ let showAllProductsByCat = (product) => {
         userArea.id = 'review-user'
         userArea.setAttribute("placeholder", "Create a user_id");
 
-    // let productArea = document.createElement('input')
-    //     productArea.className = 'form-control'
-    //     productArea.id = 'review-product'
-    //     productArea.setAttribute("placeholder", "Create a product_id");
-    
-    let star_ratingVar = document.createElement('input')
-        star_ratingVar.className = 'form-control'
-        star_ratingVar.id = 'review-rating'
-        star_ratingVar.setAttribute("placeholder", "Create start");
-
     let star_holder = document.createElement('div')
         star_holder.className = 'star-holder'
         star_holder.id = 'containerOFstars'
 
+    let rateThisProduct = document.createElement('p')
+        rateThisProduct.className = 'rateThisProduct'
+        rateThisProduct.innerText = 'Rate this product'
+
     let star_1 = document.createElement('span')
         star_1.className = 'fa fa-star-o'
         star_1.id = 1
-    
+
     let star_2 = document.createElement('span')
         star_2.className = 'fa fa-star-o'
         star_2.id = 2
@@ -188,121 +202,132 @@ let showAllProductsByCat = (product) => {
         reviewArea.setAttribute("placeholder", "Write your comment here...");
 
     let reviewInput = document.createElement('input')
-            reviewInput.type = 'submit'
-            reviewInput.className = 'btn btn-primary'
-            formContainer.innerHTML = ''
-            formContainer.append(reviewForm)
-            reviewForm.append(reviewDiv)
-            reviewDiv.append(nickNameArea)
-            reviewDiv.append(reviewArea)
-            reviewDiv.append(star_ratingVar)
+        reviewInput.type = 'submit'
+        reviewInput.className = 'btn btn-primary'
+        formContainer.innerHTML = ''
 
-            reviewDiv.append(star_holder)
-            star_holder.append(star_1, star_2, star_3, star_4, star_5)
+    mainBody.append(reviewForm, allProReviews)
 
-
-            reviewDiv.append(userArea)
+    formContainer.append(reviewForm)
+    reviewForm.append(reviewDiv)
+    reviewDiv.append(nickNameArea, reviewArea, rateThisProduct, star_holder, userArea)
+    star_holder.append(star_1, star_2, star_3, star_4, star_5)
 
 
-        // Event Listener for Stars
-        star_holder.addEventListener('click', (evt)=> {
-            console.log(evt.target.id)
-        })
+   // ---Event Listener for Stars -----------
+   star_holder.addEventListener('click', (rating)=> {
+    newRating = rating.target.id
+    rating.target.style.color = 'red'
+})
+
+reviewDiv.append(reviewInput)
+mainBody.append(formContainer)
 
 
+// -----Event Listener for button add to cart --------------
+    button.addEventListener('click', ProductSelectedToAddToCart) 
 
-    reviewDiv.append(reviewInput)
-    mainBody.append(formContainer)
 
-    
+//------FOR CONNECTING FRONTEND BACKEND------------
+
     reviewForm.addEventListener('submit', (event) => {
         event.preventDefault()
         let newNickName = event.target['review-nickname'].value
         let newReviewContent = event.target['review-content'].value
         let newUser = parseInt(event.target['review-user'].value)
-        // let newProduct = parseInt(event.target['review-product'].value)
-        let newRating = parseInt(event.target['review-rating'].value)
-
-
-
-        // console.log(`Nickname: ${newNickName}`)
-        // console.log(`Content: ${newReviewContent}`)
-        // console.log(typeof newUser)
-        // console.log(newUser, newProduct, newRating)
-
-
 
     fetch(`http://localhost:3000/reviews`, {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                content: newReviewContent,
-                nickname: newNickName,
-                user_id: newUser,
-                product_id: product.id,
-                star_rating: newRating
-
-            })
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            content: newReviewContent,
+            nickname: newNickName,
+            user_id: newUser,
+            product_id: product.id,
+            star_rating: newRating
         })
-        .then(res => res.json())
-        .then((productPOJO) => {
-            showTheProductPage(productPOJO)
-        })
-        event.target.reset()
     })
 
-    
+    .then(res => res.json())
+    .then((reviewPOJO) => {
+        slapingReviewOnDom(reviewPOJO)
+    })
+
+    // evt.target does not reset the form back to no input for stars
+    event.target.reset()
         
-    
-    
-        // ----------------------  display all reviews under the form!!
-        
-        let proReview = document.createElement('div')
+    })
+
+
+}
+
+ // ----------------------  DISPLAYS ALL REVIEWS UNDER THE FORM!-------------------------
+
+    // ------div for all reviews  ---------
+    let singleReviewCard = (product) => {
         proReview.className = 'single-review'
-    
-        console.log(product.reviews)
-    
-        product.reviews.forEach((review)=>{
-    
-        let reviewNickname = document.createElement('h5')
-        reviewNickname.className = 'nickname'
-        reviewNickname.innerText = `Username: ${review.nickname}`
-        
-    
-        let reviewContent = document.createElement('p')
-        reviewContent.className = 'content'
-        reviewContent.innerText = `Comment: ${review.content}`
-    
-        let starRating = document.createElement('span')
-        starRating.className = 'stars'
-        starRating.innerText = `No. of stars: ${review.star_rating}`
-    
-        
-    
-        proReview.append(reviewNickname, reviewContent, starRating)
-        allProReviews.append(proReview)
-    
-        
-    
-        })
-      
+        displayALLReviews(product)
     }
+
+// ---------Review Handlers----------------- 
+    let displayALLReviews = (product) => {
+
+    const categories_url_review = `http://localhost:3000/products/${product.id}`
+    fetch(categories_url_review)
+    .then(res => res.json())
+    .then(productPOJO => {
+        productPOJO.reviews.forEach(slapingReviewOnDom)
+
+    })
     
+    proReview.innerText = ''
+    // product.reviews.forEach((review)=>{
+    //     slapingReviewOnDom(review)
+    // })
+}
 
+let slapingReviewOnDom = (review) => {
 
+    let reviewHolderSection = document.createElement('div')
+        reviewHolderSection.className = 'card-deck'
+        reviewHolderSection.id = 'review-holder'
+    
+    let nicknameCard = document.createElement('div')
+        nicknameCard.className = 'card'
+        nicknameCard.id ='nickname'
 
+    let reviewNickname = document.createElement('p')
+        reviewNickname.className = 'mx-auto'
+        reviewNickname.innerText = `${review.nickname}`
 
+    let reviewSkeleton = document.createElement('div')
+        reviewSkeleton.className = 'card'
 
+    let reviewContent = document.createElement('p')
+        reviewContent.className = "card-text"
+        reviewContent.innerText = `Comment: ${review.content}`
 
+    let starRating = document.createElement('p')
+        starRating.className = 'card-text'
+        starRating.id = 'rating-star-content'
 
+    let starCount = document.createElement('small')
+        starCount.className = 'text-muted'
+        starCount.innerText = `No. of stars: ${review.star_rating}`
 
+    nicknameCard.append(reviewNickname)
+    reviewSkeleton.append(starRating, reviewContent)
+    starRating.append(starCount)
 
+    reviewHolderSection.append(nicknameCard, reviewSkeleton)
+    allProReviews.append(proReview)
+    proReview.append(reviewHolderSection)
 
+}
 
-
-
+    
 
 
 

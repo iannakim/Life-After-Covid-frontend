@@ -1,7 +1,7 @@
 
 // ---------------------- accessing products by category from side nav bar
 
-let navBar = document.querySelector('div#nav-bar-items')
+// let navBar = document.querySelector('div#nav-bar-items')
 navBar.addEventListener('click', (evt) => {
     mainBody.innerText = ''
         if (evt.target.id == "all"){fetchAllProducts()}

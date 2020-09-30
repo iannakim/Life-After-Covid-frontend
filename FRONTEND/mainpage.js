@@ -2,8 +2,9 @@
 
 
 const initialPage = document.querySelector("#screen1")
+let navBar = document.querySelector('div#nav-bar-items')
 
-initialPage.addEventListener('click', (event) => {
+navBar.addEventListener('click', (event) => {
     initialPage.innerHTML = ""
     initialPage.className = "hide";
 
