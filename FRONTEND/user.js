@@ -1,17 +1,6 @@
 
-const topNav = document.querySelector("div.top-bar")
-const formContainer = document.querySelector("div#sign-up-form")
 let currentUser;
-
-// ------------------------------------------------ top nav bar event listener
-topNav.addEventListener('click', (evt) => {
-    mainBody.innerText = ''
-    formContainer.innerText = ''
-        if (evt.target.id == "cart"){console.log("clicked cart")}
-        else if (evt.target.id == "login"){showLoginForm()}
-        else if (evt.target.id == "signup"){showSignUpForm()}
-        else {console.log("hello")}
-})
+const formContainer = document.querySelector("div#sign-up-form")
 
 
 // ------------------------------------------------ create user
@@ -153,9 +142,9 @@ let showSignUpForm = () => {
             })
         })
         .then(res => res.json())
-        .then((newUserObj) =>{
-            currentUser = newUserObj  // assigns this user to currentUser global var
-            console.log(currentUser)
+        .then((newUser) =>{
+            checkIfCartExists(newUser)
+            currentUser = newUser  // assigns this user to currentUser global var
         })
         event.target.reset()
     }// end of handleSignUpForm
@@ -169,13 +158,12 @@ let showSignUpForm = () => {
 
 
 let showLoginForm = () => {
-    
 
     let logInForm = document.createElement('form'); // Create New Element Form
     formContainer.appendChild(logInForm);
     
     let heading = document.createElement('h2'); // Heading of Form
-        heading.innerText = "Welcome Back! Log in: ";
+        heading.innerText = "Log in";
         logInForm.appendChild(heading);
     
     let line = document.createElement('hr'); // linebreak
@@ -210,14 +198,14 @@ let showLoginForm = () => {
         submitButton.innerText = "Login"
         logInForm.append(submitButton)
   
-
+    mainBody.append(formContainer)
     logInForm.addEventListener("submit", handleLoginForm)
 
 }   
 
 let handleLoginForm = (evt) => {
     evt.preventDefault()
-    let userName = evt.target["username"].value
+    let userLoggingIn = evt.target["username"].value
 
     fetch("http://localhost:3000/login", {
         method: "POST",
@@ -225,18 +213,21 @@ let handleLoginForm = (evt) => {
             "content-type": "application/json"
         },
         body: JSON.stringify({
-            username: userName
+            username: userLoggingIn
         })
     })
         .then(res => res.json())
-        .then(response => {
+        .then(user => {
  
-            if(response.id){
-                console.log(response)
-                currentUser = response;
+            if(user.id){
+                console.log(user)
+                currentUser = user;
+                checkIfCartExists(user)
+                //redirect user to homepage
             } else {
-                console.error(response)
+                // console.error(response)
+                alert("Username Not Found. Please try again.")
             }
-
         })
+        evt.target.reset()
 }

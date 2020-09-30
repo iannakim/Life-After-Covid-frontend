@@ -14,9 +14,7 @@ let arrayofProduct = []
 // ----------------------  display all products
 
 let showAllProductsByCat = (product) => {
-    initialPage.innerHTML = ""
-    // mainCartContainer.innerText = ''
-
+ 
     mainBody.className = 'row row-cols-1 row-cols-md-2 row-cols-lg-3'
 
     let productDiv = document.createElement('div')
@@ -237,7 +235,7 @@ mainBody.append(formContainer)
 
 
 // -----Event Listener for button add to cart --------------
-    button.addEventListener('click', ProductSelectedToAddToCart) 
+    button.addEventListener('click', ProductSelectedToAddToCart) //go to addproduct js
 
 
 //------FOR CONNECTING FRONTEND BACKEND------------
@@ -245,7 +243,7 @@ mainBody.append(formContainer)
     reviewForm.addEventListener('submit', (event) => {
 
         if(!currentUser) {
-                alert('Not login')
+                alert('Please Log In First')
 
         }
 
