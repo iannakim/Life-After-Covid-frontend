@@ -1,5 +1,6 @@
 let ProductSelectedToAddToCart = (event) => {
 
+    let productQuantity = parseInt(valueSelectedFromQuantity)
 
     fetch(`http://localhost:3000/addProducts`, {
         method: "POST",
@@ -7,9 +8,9 @@ let ProductSelectedToAddToCart = (event) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            cart_id: 1,
+            cart_id: currentCart.id,
             product_id: globalProduct.id,
-            quantity: 1
+            quantity: productQuantity
 
         })
     })
@@ -18,7 +19,7 @@ let ProductSelectedToAddToCart = (event) => {
     .then((addedProduct) => {
         console.log('This is a list of all added products:')
         console.log(addedProduct)
-
+        console.log(currentCart)
         // add logic for the cart count at top in here
         // renderCartPage
     })
@@ -160,13 +161,3 @@ let cartFunction = () => {
 
 
 
-    chooseQuantity.addEventListener('change', (evt) => {
-        valueSelectedFromQuantity = evt.target.value
-        console.log(evt.target.value)
-        
-    })
-
-
-    
-
-    console.log(valueSelectedFromQuantity)

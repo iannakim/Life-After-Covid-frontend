@@ -7,7 +7,7 @@ let allProReviews = document.createElement('div')
 let proReview = document.createElement('div')
 let chooseQuantity = document.createElement('select')
 
-let valueSelectedFromQuantity = 1
+let valueSelectedFromQuantity = "1"
 
 let newRating = []
 let allReviews = []
@@ -58,7 +58,6 @@ let showAllProductsByCat = (product) => {
 // ------------DISPLAY ONE SINGLE PRODUCT --------------------
 
 let showTheProductPage = (product) => {
-
     globalProduct = product
 
     mainBody.className = 'none'
@@ -293,6 +292,14 @@ mainBody.append(formContainer)
 
 
 }
+
+
+chooseQuantity.addEventListener('change', (evt) => {
+    valueSelectedFromQuantity = evt.target.value
+})
+
+
+
 
  // ----------------------  DISPLAYS ALL REVIEWS UNDER THE FORM!-------------------------
 
