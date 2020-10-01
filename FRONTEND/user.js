@@ -238,6 +238,17 @@ let handleLoginForm = (evt) => {
                 currentUser = user;
                 checkIfCartExists(currentUser)
                 renderLogoPage()
+                
+                let logIn = document.querySelector("a#login.category")
+                    logIn.remove()
+                let signUp = document.querySelector("a#signup.category")
+                    signUp.remove()
+                let loggedInUser = document.querySelector("a#namehere.category")
+                    loggedInUser.innerText = `Hello, ${currentUser.name}!`
+                let logOut = document.querySelector("a#logout.category")
+                    logOut.innerText = "Log out"
+
+
             } else {
                 alert("Username Not Found. Please try again.")
             }

@@ -16,9 +16,11 @@ topNav.addEventListener('click', (evt) => {
     mainBody.innerText = ''
     formContainer.innerText = ''
 
-        if (evt.target.id == "cart"){renderCartPage()}
         if (evt.target.id == "login"){showLoginForm()}
+        if (evt.target.id == "namehere"){renderLogoPage()}
+        if (evt.target.id == "logout"){window.location.reload(true)}
         if (evt.target.id == "signup"){showSignUpForm()}
+        if (evt.target.id == "cart"){renderCartPage()}
 })
 
 
