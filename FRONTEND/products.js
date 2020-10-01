@@ -161,7 +161,7 @@ let showTheProductPage = (product) => {
         allProReviews.className = 'reviews'
         let ratingAndReview = document.createElement('h5')
             ratingAndReview.id ='ratingAndReview'
-            ratingAndReview.innerText = "Ratings & Reviews"
+            ratingAndReview.innerText = "Customer Ratings & Reviews"
         allProReviews.append(ratingAndReview)
 
         singleReviewCard(product)
@@ -266,10 +266,9 @@ mainBody.append(formContainer)
 
         if(!currentUser) {
                 alert('Please Log In First')
-
+                errorMessage.innerText = "User not log in "
         }
 
-            errorMessage.innerText = "User not log in "
         event.preventDefault()
         let newNickName = event.target['review-nickname'].value
         let newReviewContent = event.target['review-content'].value
@@ -341,6 +340,7 @@ let slapingReviewOnDom = (review) => {
     let reviewHolderSection = document.createElement('div')
         reviewHolderSection.className = 'card-deck'
         reviewHolderSection.id = 'review-holder'
+
     
     let nicknameCard = document.createElement('div')
         nicknameCard.className = 'card'
@@ -348,6 +348,7 @@ let slapingReviewOnDom = (review) => {
 
     let reviewNickname = document.createElement('p')
         reviewNickname.className = 'mx-auto'
+        reviewNickname.id = 'reviewNickName'
         reviewNickname.innerText = `${review.nickname}`
 
     let reviewSkeleton = document.createElement('div')
@@ -355,6 +356,7 @@ let slapingReviewOnDom = (review) => {
 
     let reviewContent = document.createElement('p')
         reviewContent.className = "card-text"
+        reviewContent.id = 'review-holder'
         reviewContent.innerText = `Comment: ${review.content}`
 
     let starRating = document.createElement('p')

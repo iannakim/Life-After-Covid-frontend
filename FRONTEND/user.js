@@ -8,6 +8,7 @@ const formContainer = document.querySelector("div#sign-up-form")
 let showSignUpForm = () => {
 
     let signUpForm = document.createElement('form'); // Create New Element Form
+        signUpForm.className ='sign-up-form'
     formContainer.appendChild(signUpForm);
     
     let heading = document.createElement('h2'); // Heading of Form
@@ -105,7 +106,8 @@ let showSignUpForm = () => {
     
     let submitBtn = document.createElement('button'); // Append Submit Button
     submitBtn.type = "submit"
-    submitBtn.className = "btn btn-primary"
+    submitBtn.className = "btn btn-primary btn-lg"
+    submitBtn.id = 'sign-up-button'
     submitBtn.innerText = "Create Account"
     signUpForm.appendChild(submitBtn);
 
@@ -163,40 +165,45 @@ let showLoginForm = () => {
     formContainer.appendChild(logInForm);
     
     let heading = document.createElement('h2'); // Heading of Form
-        heading.innerText = "Log in";
+        heading.id = 'headerLogIn'
+        heading.innerText = "Welcome Back";
         logInForm.appendChild(heading);
     
-    let line = document.createElement('hr'); // linebreak
-        logInForm.appendChild(line);
+    // let lastline = document.createElement('hr'); // linebreak
+    //     logInForm.appendChild(lastline);
     
     let linebreak = document.createElement('br'); // space
         logInForm.appendChild(linebreak);
 
     let usernameLabel = document.createElement("label")
-        usernameLabel.innerText = "Username"
+        usernameLabel.innerText = "Username "
         logInForm.appendChild(usernameLabel);
 
     let usernameInput = document.createElement("input")
         usernameInput.type = "text"
         usernameInput.id = "username"
-        usernameInput.placeholder = "Enter Username"
+        usernameInput.placeholder = " Enter Username"
         usernameInput.autocomplete = "off"
         logInForm.appendChild(usernameInput);
 
     let linebreak1 = document.createElement('br'); // space
         logInForm.appendChild(linebreak1);
     
-    let lastline = document.createElement('hr'); // linebreak
-        logInForm.appendChild(lastline);
     
     let linebreak3 = document.createElement('br'); // space
         logInForm.appendChild(linebreak3);
     
     let submitButton = document.createElement('button')
         submitButton.type = "submit"
-        submitButton.className = "btn btn-primary"
-        submitButton.innerText = "Login"
+        submitButton.className = "btn btn-primary btn-lg"
+        submitButton.id = 'login-button'
+        submitButton.innerText = "Log in"
         logInForm.append(submitButton)
+
+    let noaccount = document.createElement('div'); // don't have an account? 
+        noaccount.className = 'no-account'
+        noaccount.innerText = "Don't have an account? Sign Up"
+        logInForm.appendChild(noaccount);
   
     mainBody.append(formContainer)
     logInForm.addEventListener("submit", handleLoginForm)

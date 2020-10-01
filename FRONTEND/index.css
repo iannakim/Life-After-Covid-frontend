@@ -39,17 +39,45 @@
 }
 
 
+/* -----Review Container ----------------  */
+.reviews {
+  margin-top: 10%;
+}
 
 
+#ratingAndReview {
+  padding-top: 30px;
+  border-top: 1px solid#DCDCDC;
+  margin-bottom: 8%;
+  font-size: 26px;
+}
 
+#review-holder {
+  margin-top: -4%;
+}
 
+#nickname {
+  margin-top: 4%;
+}
 
+.single-review {
+  padding: 0 10%;
+}
 
+#new-review { 
+  padding: 0 20%;
+  /* margin-left: 30%; */
+  margin-top: 6%;
+  width: 100%
+}
 
+.rateThisProduct {
+  padding-top: 4%;
+}
 
-
-
-
+#containerOFstars {
+  padding-bottom: 4%;
+}
 
 
 /* --------overwritting bootstrap defaults------------------------  */
@@ -90,7 +118,7 @@
 }
 
 .card-body  {
-  width: 20vw
+  width: 36vw;
 }
 
 .card-img-top {
@@ -108,6 +136,43 @@
   margin-top: 8%;
 }
 
+
+#product-info {
+padding: 7% 0;
+}
+
+.basket-title {
+  float:left; 
+  /* font-weight: bolder; */
+  margin-left: 8%;
+  margin-bottom: -3%;
+  font-size: 30px;
+  text-shadow: 1px 1px
+}
+
+.product-list {
+  width: 50%;
+}
+
+.total-info {
+  float: right;
+  position: relative;
+  top: -200px;
+  margin-right: 10%
+}
+
+.singular-product {
+  padding-top: 6%
+}
+
+#subtotal {
+  font-size: 25px
+}
+
+#estimated-total {
+  font-size: 22px;
+  font-weight: bold;
+}
 .mx-auto {
   padding-bottom: 8%;
 }
@@ -121,7 +186,7 @@ body {
 .top-bar {
   float: right;
   margin-right: 10px;
-  margin-top: -25px; 
+  margin-top: -50px; 
   text-shadow: 1px 0.5px;
 }
 
@@ -163,7 +228,8 @@ z-index: 1;
 
 body {
 background: #fff;
-font-family: 'open-sans-bold', AvenirNext-Medium, sans-serif;
+font-family: 'Dosis', sans-serif;
+/* font-family: 'open-sans-bold', AvenirNext-Medium, sans-serif; */
 font-size: 18px;
 text-align: center;
 }
@@ -256,6 +322,11 @@ display: none;
 
 }
 
+@media screen and (max-height: 600px) {
+  .top-bar {margin-top: -80px!important;}
+
+}
+
 /* -----------------CART PAGE ---------------------------- */
 .cart-holder {
 margin-left: 10%;
@@ -267,4 +338,34 @@ margin-left: 30px
 
 #horizontal-line {
 border-bottom: 1px solid #111;
+}
+
+
+
+
+
+
+/* ----------login page -----------------  */
+
+#login-button {
+  width: 15%;
+}
+
+.no-account {
+  margin-top: 3%;
+}
+
+
+
+#sign-up-button {
+  width: 20%
+}
+ 
+.sign-up-form {
+  text-align: right;
+  margin-right: 25%;
+}
+
+.sign-up-form label {
+  padding: 5px
 }
