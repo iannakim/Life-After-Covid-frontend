@@ -25,7 +25,7 @@ Users can navigate through a list of PPE products and select the products they w
 
 <img src='FRONTEND/image/ERD.png'> </img>
 
-## WireFrames 
+## Wireframe
 
 <img src='FRONTEND/image/wireframe1.png'> </img>
 
