@@ -1,43 +1,5 @@
 let currentCart;
-
-
-// ------------------------------------ DOM elements
-
-let basketTitle = document.createElement('h5')
-    basketTitle.clasName = 'basket-title'
-    basketTitle.innerText = 'My Basket'
-
-let horizonLine = document.createElement('div')
-    horizonLine.id = 'horizontal-line'
-
-let cardDeck = document.createElement('div')
-    cardDeck.className = 'card-deck'
-
-let productList = document.createElement('div')
-    productList.className = 'product-list'
-
-let singularProduct = document.createElement('div')
-    singularProduct.className = 'singular-product'
-
-let totalInfo = document.createElement('div')
-    totalInfo.className = 'total-info'
-
-let subtotal = document.createElement('p')
-    subtotal.id = 'subtotal'
-    subtotal.innerText = "Merchandise Subtotal $ --.00"
-
-let estimatedTotal = document.createElement('p')
-    estimatedTotal.id = 'estimated-total'
-    estimatedTotal.innerText = 'Estimated Total: $--.00'
-
-let checkOut = document.createElement('button')
-    checkOut.id = 'check-out'
-    checkOut.innerText = 'CHECK OUT'
-
-totalInfo.append(subtotal, estimatedTotal, checkOut)
-
-
-
+let currentTotal = 0;
 
 let checkIfCartExists = (user) => {
 
@@ -88,6 +50,44 @@ let createCartForUser = (user) => {
 }
 
 
+// ------------------------------------ DOM elements
+
+let basketTitle = document.createElement('h5')
+    basketTitle.clasName = 'basket-title'
+    basketTitle.innerText = 'My Basket'
+
+let horizonLine = document.createElement('div')
+    horizonLine.id = 'horizontal-line'
+
+let cardDeck = document.createElement('div')
+    cardDeck.className = 'card-deck'
+
+let productList = document.createElement('div')
+    productList.className = 'product-list'
+
+let singularProduct = document.createElement('div')
+    singularProduct.className = 'singular-product'
+
+let totalInfo = document.createElement('div')
+    totalInfo.className = 'total-info'
+
+let subtotal = document.createElement('p')
+    subtotal.id = 'subtotal'
+    subtotal.innerText = `Merchandise Subtotal $${currentTotal}.00`
+
+
+
+let estimatedTotal = document.createElement('p')
+    estimatedTotal.id = 'estimated-total'
+    estimatedTotal.innerText = `Estimated Total $${currentTotal}.00`
+
+let checkOut = document.createElement('button')
+    checkOut.id = 'check-out'
+    checkOut.innerText = 'CHECK OUT'
+
+totalInfo.append(subtotal, estimatedTotal, checkOut)
+
+
 
 
 let renderCartPage = () => {
@@ -101,6 +101,8 @@ let renderCartPage = () => {
                 displayItemsInCart(itemInCart)
             })
         })
+
+
 }   
 
 
@@ -142,6 +144,14 @@ let displayItemsInCart = (item) => {
         buttonRemove.id = 'product-remove'
         buttonRemove.innerText = 'Remove'
     
+
+
+    let totalPriceOfItem = (item.quantity * item.product.price)
+    currentTotal += totalPriceOfItem
+
+
+
+
     cardProductPriceRemove.append(productPrice, buttonRemove)
     cardProdNameQuantity.append(productName, productQuantity)
     cardImg.append(imgTag)
@@ -154,9 +164,6 @@ let displayItemsInCart = (item) => {
     
     
     buttonRemove.addEventListener('click', (event)=>{
-        console.log(currentCart.id)
-        console.log(item.id)
-
 
         fetch(`http://localhost:3000/removeitem`, {
             method: "DELETE",
@@ -168,7 +175,7 @@ let displayItemsInCart = (item) => {
             })
         })
         .then(resp => {renderCartPage()});
-        
+        currentTotal = 0
     })
 }
 

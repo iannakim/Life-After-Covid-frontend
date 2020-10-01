@@ -223,7 +223,7 @@ let handleLoginForm = (evt) => {
                 console.log(user)
                 currentUser = user;
                 checkIfCartExists(currentUser)
-                //redirect user to homepage
+                //redirect user to the page with 2 IMAGES!!!!!!!
             } else {
                 // console.error(response)
                 alert("Username Not Found. Please try again.")

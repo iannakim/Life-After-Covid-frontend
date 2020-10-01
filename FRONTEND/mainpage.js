@@ -18,6 +18,7 @@ topNav.addEventListener('click', (evt) => {
 
 screen.addEventListener('click', (event) => {
     screen.className = "hide";
+    //invoke some method here that goes to page with 2 images.
 })
 
 
@@ -55,4 +56,11 @@ let fetchProductsByCat = (id) => {
             showAllProductsByCat(product)
         }) 
      }) 
+}
+
+
+
+let defaultPage = () => {
+
+    
 }
