@@ -38,7 +38,8 @@ topNav.addEventListener('click', (evt) => {
 
 screen.addEventListener('click', (event) => {
     screen.className = "hide";
-    //invoke some method here that goes to page with 2 images.
+    renderLogoPage()
+
 })
 
 
@@ -91,6 +92,7 @@ let defaultPage = () => {
 
 
 let renderLogoPage = () => {
+    formContainer.innerText = ''
     categoryNameh1.innerText = ''
     mainBody.className = 'logoPage-hero'
     

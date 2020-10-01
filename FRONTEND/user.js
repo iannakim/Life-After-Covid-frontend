@@ -150,7 +150,8 @@ let showSignUpForm = () => {
         .then(res => res.json())
         .then((newUser) =>{
             checkIfCartExists(newUser)
-            currentUser = newUser  // assigns this user to currentUser global var
+            currentUser = newUser 
+            renderLogoPage()
         })
         event.target.reset()
     }// end of handleSignUpForm
@@ -236,7 +237,7 @@ let handleLoginForm = (evt) => {
                 console.log(user)
                 currentUser = user;
                 checkIfCartExists(currentUser)
-                //redirect user to the page with 2 IMAGES!!!!!!!
+                renderLogoPage()
             } else {
                 // console.error(response)
                 alert("Username Not Found. Please try again.")
