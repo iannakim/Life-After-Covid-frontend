@@ -59,7 +59,7 @@ Users can navigate through a list of PPE products and select the products they w
  ## Setup for running this application
  
  * Clone this <a href = "https://github.com/fbado66/Mod_3-back-end-Api"> repo </a> into your local computer
- * run bundle install to ensure all the gems are set in your local system 
+ * cd into the repository you just cloned and run bundle install in the command line to ensure all the gems are set in your local system 
  * run rails db:migrate to migrate all the tables for the backend 
  * run rails db:seed, to create the seed data
  * open index.html from this <a href = "https://github.com/iannakim/Mod-3-Project"> repo </a> and you can start testing the SPA
