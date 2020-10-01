@@ -4,7 +4,7 @@
 let ProductSelectedToAddToCart = (event) => {
 
     if (valueSelectedFromQuantity == null){
-        valueSelectedFromQuantity == 1
+        valueSelectedFromQuantity = 1
     }
 
     fetch(`http://localhost:3000/addProducts`, {
@@ -21,17 +21,9 @@ let ProductSelectedToAddToCart = (event) => {
 
     .then(res => res.json())
     .then((addedProduct) => {
-        // console.log(addedProduct)
-        // renderCartPage(addedProduct)
     })
 }
 
-
-
-let cartNav = document.querySelector('#cart')
-cartNav.addEventListener('click', () => {
-    renderCartPage()
-})
 
 
 

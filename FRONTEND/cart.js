@@ -1,10 +1,43 @@
-const mainCartContainer = document.querySelector("div.cart-holder")  
-// console.log(mainCartContainer)
-
-
-
-
 let currentCart;
+
+
+// ------------------------------------ DOM elements
+
+let basketTitle = document.createElement('h5')
+    basketTitle.clasName = 'basket-title'
+    basketTitle.innerText = 'My Basket'
+
+let horizonLine = document.createElement('div')
+    horizonLine.id = 'horizontal-line'
+
+let cardDeck = document.createElement('div')
+    cardDeck.className = 'card-deck'
+
+let productList = document.createElement('div')
+    productList.className = 'product-list'
+
+let singularProduct = document.createElement('div')
+    singularProduct.className = 'singular-product'
+
+let totalInfo = document.createElement('div')
+    totalInfo.className = 'total-info'
+
+let subtotal = document.createElement('p')
+    subtotal.id = 'subtotal'
+    subtotal.innerText = "Merchandise Subtotal $ --.00"
+
+let estimatedTotal = document.createElement('p')
+    estimatedTotal.id = 'estimated-total'
+    estimatedTotal.innerText = 'Estimated Total: $--.00'
+
+let checkOut = document.createElement('button')
+    checkOut.id = 'check-out'
+    checkOut.innerText = 'CHECK OUT'
+
+totalInfo.append(subtotal, estimatedTotal, checkOut)
+
+
+
 
 let checkIfCartExists = (user) => {
 
@@ -58,7 +91,9 @@ let createCartForUser = (user) => {
 
 
 let renderCartPage = () => {
-    mainBody.innerText = ''
+    while (singularProduct.hasChildNodes()) {
+        singularProduct.removeChild(singularProduct.lastChild);
+    }
     fetch(`http://localhost:3000/carts/${currentCart.id}`)
         .then(res => res.json())
         .then(cart => {
@@ -66,104 +101,81 @@ let renderCartPage = () => {
                 displayItemsInCart(itemInCart)
             })
         })
-
 }   
 
 
-// ------------------------------------ DOM elements
 
-    let basketTitle = document.createElement('h5')
-        basketTitle.clasName = 'basket-title'
-        basketTitle.innerText = 'My Basket'
+//----------------------------- display current items in cart
 
-    let horizonLine = document.createElement('div')
-        horizonLine.id = 'horizontal-line'
+let displayItemsInCart = (item) => {
+    let cardGroup = document.createElement('div')
+        cardGroup.className = 'card-group'
+        cardGroup.id = 'product-info'
 
-    let cardDeck = document.createElement('div')
-        cardDeck.className = 'card-deck'
+    let cardImg = document.createElement('div')
+        cardImg.className = 'card'
 
-    let productList = document.createElement('div')
-        productList.className = 'product-list'
+    let imgTag = document.createElement('img')
+        imgTag.src = item.product.image
+        imgTag.alt = item.product.name
 
-    let singularProduct = document.createElement('div')
-        singularProduct.className = 'singular-product'
-
-    let totalInfo = document.createElement('div')
-        totalInfo.className = 'total-info'
-
-    let subtotal = document.createElement('p')
-        subtotal.id = 'subtotal'
-        subtotal.innerText = "Merchandise Subtotal $ --.00"
-
-    let estimatedTotal = document.createElement('p')
-        estimatedTotal.id = 'estimated-total'
-        estimatedTotal.innerText = 'Estimated Total: $--.00'
-
-    let checkOut = document.createElement('button')
-        checkOut.id = 'check-out'
-        checkOut.innerText = 'CHECK OUT'
+    let cardProdNameQuantity = document.createElement('div')
+        cardProdNameQuantity.className = 'card'
+    
+    let productName = document.createElement('p')
+        productName.id = 'product-name'
+        productName.innerText = item.product.name
 
 
-    totalInfo.append(subtotal, estimatedTotal, checkOut)
+    let productQuantity = document.createElement('p')
+        productQuantity.id = 'product-quantity'
+        productQuantity.innerText = `Qty: ${item.quantity}`
+
+    let cardProductPriceRemove = document.createElement('div')
+        cardProductPriceRemove.className = 'card'
+
+    let productPrice = document.createElement('p')
+        productPrice.id = 'product-price'
+        productPrice.innerText = `Unit Price: $${item.product.price}.00`
+
+    let buttonRemove = document.createElement('button')
+        buttonRemove.id = 'product-remove'
+        buttonRemove.innerText = 'Remove'
+    
+    cardProductPriceRemove.append(productPrice, buttonRemove)
+    cardProdNameQuantity.append(productName, productQuantity)
+    cardImg.append(imgTag)
+    cardGroup.append(cardImg, cardProdNameQuantity, cardProductPriceRemove)
+    singularProduct.append(cardGroup)
+    productList.append(singularProduct)
+    cardDeck.append(productList, totalInfo)
+    mainBody.append(basketTitle, horizonLine, cardDeck)
+
+    
+    
+    buttonRemove.addEventListener('click', (event)=>{
+        console.log(currentCart.id)
+        console.log(item.id)
 
 
-  //----------------------------- display current items in cart
-
-
-  let displayItemsInCart = (item) => {
-        let cardGroup = document.createElement('div')
-            cardGroup.className = 'card-group'
-            cardGroup.id = 'product-info'
-
-        let cardImg = document.createElement('div')
-            cardImg.className = 'card'
-
-        let imgTag = document.createElement('img')
-            imgTag.src = item.product.image
-            imgTag.alt = item.product.name
-
-        let cardProdNameQuantity = document.createElement('div')
-            cardProdNameQuantity.className = 'card'
+        fetch(`http://localhost:3000/removeitem`, {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: item.id
+            })
+        })
+        .then(resp => {renderCartPage()});
         
-        let productName = document.createElement('p')
-            productName.id = 'product-name'
-            productName.innerText = item.product.name
-
-
-        let productQuantity = document.createElement('p')
-            productQuantity.id = 'product-quantity'
-            productQuantity.innerText = `Qty: ${item.quantity}`
-
-        let cardProductPriceRemove = document.createElement('div')
-            cardProductPriceRemove.className = 'card'
-
-        let productPrice = document.createElement('p')
-            productPrice.id = 'product-price'
-            productPrice.innerText = `Price: $${item.product.price}.00`
-
-        let buttonRemove = document.createElement('button')
-            buttonRemove.id = 'product-remove'
-            buttonRemove.innerText = 'Remove'
-        
-        cardProductPriceRemove.append(productPrice, buttonRemove)
-        cardProdNameQuantity.append(productName, productQuantity)
-        cardImg.append(imgTag)
-        cardGroup.append(cardImg, cardProdNameQuantity, cardProductPriceRemove)
-        singularProduct.append(cardGroup)
-        productList.append(singularProduct)
-        cardDeck.append(productList, totalInfo)
-        mainBody.append(basketTitle, horizonLine, cardDeck)
-        }
+    })
+}
 
 
 
 
-
-// // let cartFunction = () => {
-// //     console.log("I am coming from cart.js")
-// //     }
-
-
+    
 
 
 

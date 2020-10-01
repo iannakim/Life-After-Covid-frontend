@@ -1,6 +1,6 @@
 
 const categories_url = "http://localhost:3000/categories"
-const mainBody = document.querySelector("div.row.row-cols-1.row-cols-md-2")
+const mainBody = document.querySelector("div#mainbody")
 
 let formHolder = document.querySelector('div#form-container')
 let allProReviews = document.createElement('div')
@@ -19,8 +19,6 @@ let arrayofProduct = []
 
 let showAllProductsByCat = (product) => {
  
-    mainBody.className = 'row row-cols-1 row-cols-md-2 row-cols-lg-3'
-
     let productDiv = document.createElement('div')
     productDiv.className = "col mb-4"
     mainBody.append(productDiv)

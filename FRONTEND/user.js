@@ -222,7 +222,7 @@ let handleLoginForm = (evt) => {
             if(user.id){
                 console.log(user)
                 currentUser = user;
-                checkIfCartExists(user)
+                checkIfCartExists(currentUser)
                 //redirect user to homepage
             } else {
                 // console.error(response)

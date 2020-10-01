@@ -12,8 +12,7 @@ topNav.addEventListener('click', (evt) => {
     formContainer.innerText = ''
         if (evt.target.id == "cart"){renderCartPage()}
         if (evt.target.id == "login"){showLoginForm()}
-        else if (evt.target.id == "signup"){showSignUpForm()}
-        else {console.log("hello")}
+        if (evt.target.id == "signup"){showSignUpForm()}
 })
 
 
