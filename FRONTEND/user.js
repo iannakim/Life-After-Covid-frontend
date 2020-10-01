@@ -1,24 +1,18 @@
 
-const topNav = document.querySelector("div.top-bar")
-const formContainer = document.querySelector("div#sign-up-form")
 let currentUser;
-
-// ------------------------------------------------ top nav bar event listener
-topNav.addEventListener('click', (evt) => {
-    mainBody.innerText = ''
-    formContainer.innerText = ''
-        if (evt.target.id == "cart"){console.log("clicked cart")}
-        else if (evt.target.id == "login"){showLoginForm()}
-        else if (evt.target.id == "signup"){showSignUpForm()}
-        else {console.log("hello")}
-})
+const formContainer = document.querySelector("div#sign-up-form")
 
 
 // ------------------------------------------------ create user
 
 let showSignUpForm = () => {
+    categoryNameh1.innerText = ''
+    mainBody.innerText = ''
+    mainBody.className = ''
+
 
     let signUpForm = document.createElement('form'); // Create New Element Form
+        signUpForm.className ='sign-up-form'
     formContainer.appendChild(signUpForm);
     
     let heading = document.createElement('h2'); // Heading of Form
@@ -116,7 +110,8 @@ let showSignUpForm = () => {
     
     let submitBtn = document.createElement('button'); // Append Submit Button
     submitBtn.type = "submit"
-    submitBtn.className = "btn btn-primary"
+    submitBtn.className = "btn btn-primary btn-lg"
+    submitBtn.id = 'sign-up-button'
     submitBtn.innerText = "Create Account"
     signUpForm.appendChild(submitBtn);
 
@@ -153,9 +148,10 @@ let showSignUpForm = () => {
             })
         })
         .then(res => res.json())
-        .then((newUserObj) =>{
-            currentUser = newUserObj  // assigns this user to currentUser global var
-            console.log(currentUser)
+        .then((newUser) =>{
+            checkIfCartExists(newUser)
+            currentUser = newUser 
+            renderLogoPage()
         })
         event.target.reset()
     }// end of handleSignUpForm
@@ -169,55 +165,58 @@ let showSignUpForm = () => {
 
 
 let showLoginForm = () => {
-    
+    categoryNameh1.innerText = ''
+
 
     let logInForm = document.createElement('form'); // Create New Element Form
     formContainer.appendChild(logInForm);
     
     let heading = document.createElement('h2'); // Heading of Form
-        heading.innerText = "Welcome Back! Log in: ";
+        heading.id = 'headerLogIn'
+        heading.innerText = "Welcome Back";
         logInForm.appendChild(heading);
-    
-    let line = document.createElement('hr'); // linebreak
-        logInForm.appendChild(line);
     
     let linebreak = document.createElement('br'); // space
         logInForm.appendChild(linebreak);
 
     let usernameLabel = document.createElement("label")
-        usernameLabel.innerText = "Username"
+        usernameLabel.innerText = "Username "
         logInForm.appendChild(usernameLabel);
 
     let usernameInput = document.createElement("input")
         usernameInput.type = "text"
         usernameInput.id = "username"
-        usernameInput.placeholder = "Enter Username"
+        usernameInput.placeholder = " Enter Username"
         usernameInput.autocomplete = "off"
         logInForm.appendChild(usernameInput);
 
     let linebreak1 = document.createElement('br'); // space
         logInForm.appendChild(linebreak1);
     
-    let lastline = document.createElement('hr'); // linebreak
-        logInForm.appendChild(lastline);
     
     let linebreak3 = document.createElement('br'); // space
         logInForm.appendChild(linebreak3);
     
     let submitButton = document.createElement('button')
         submitButton.type = "submit"
-        submitButton.className = "btn btn-primary"
-        submitButton.innerText = "Login"
+        submitButton.className = "btn btn-primary btn-lg"
+        submitButton.id = 'login-button'
+        submitButton.innerText = "Log in"
         logInForm.append(submitButton)
-  
 
+    let noaccount = document.createElement('div'); // don't have an account? 
+        noaccount.className = 'no-account'
+        noaccount.innerHTML = "Don't have an account? Please Sign Up"
+        logInForm.appendChild(noaccount);
+  
+    mainBody.append(formContainer)
     logInForm.addEventListener("submit", handleLoginForm)
 
 }   
 
 let handleLoginForm = (evt) => {
     evt.preventDefault()
-    let userName = evt.target["username"].value
+    let userLoggingIn = evt.target["username"].value
 
     fetch("http://localhost:3000/login", {
         method: "POST",
@@ -225,18 +224,31 @@ let handleLoginForm = (evt) => {
             "content-type": "application/json"
         },
         body: JSON.stringify({
-            username: userName
+            username: userLoggingIn
         })
     })
         .then(res => res.json())
-        .then(response => {
+        .then(user => {
  
-            if(response.id){
-                console.log(response)
-                currentUser = response;
-            } else {
-                console.error(response)
-            }
+            if(user.id){
+                console.log(user)
+                currentUser = user;
+                checkIfCartExists(currentUser)
+                renderLogoPage()
+                
+                let logIn = document.querySelector("a#login.category")
+                    logIn.remove()
+                let signUp = document.querySelector("a#signup.category")
+                    signUp.remove()
+                let loggedInUser = document.querySelector("a#namehere.category")
+                    loggedInUser.innerText = `Hello, ${currentUser.name}!`
+                let logOut = document.querySelector("a#logout.category")
+                    logOut.innerText = "Log out"
 
+
+            } else {
+                alert("Username Not Found. Please try again.")
+            }
         })
+        evt.target.reset()
 }

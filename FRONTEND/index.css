@@ -1,4 +1,96 @@
+/* ---------------- Header Offer ----------------------- */
+.header-offer {
+  color: white;
+  background: #426876;
+  padding: 1%
+}
+
+/* Navbar  */
+.logo {
+  font-family: 'Bebas Neue';
+  font-size: 50px;
+  margin-top: -25px; 
+  /* text-shadow: 1px 1px ; */
+  margin-right: 2%
+}
+
+
+/* Category name display  */
+
+.category-name {
+    float: left;
+    display: block;
+    margin-left: 4%;
+    margin-top: 4%;
+    width: 250px;
+    position: absolute
+}
+
+.category-name h1 {
+  font-size: 30px;
+  text-shadow: 1px 1px;
+    
+}
+
+
+
+
+/* Styling the card that holds a product on the display all products  */
+.col.mb-4 {
+  margin: 5% 0;
+}
+
+
+/* -----Review Container ----------------  */
+.reviews {
+  margin-top: 10%;
+}
+
+
+#ratingAndReview {
+  padding-top: 30px;
+  border-top: 1px solid#DCDCDC;
+  margin-bottom: 8%;
+  font-size: 26px;
+}
+
+#review-holder {
+  margin-top: -4%;
+}
+
+#nickname {
+  margin-top: 4%;
+}
+
+.single-review {
+  padding: 0 10%;
+}
+
+#new-review { 
+  padding: 0 20%;
+  /* margin-left: 30%; */
+  margin-top: 6%;
+  width: 100%
+}
+
+.rateThisProduct {
+  padding-top: 4%;
+}
+
+#containerOFstars {
+  padding-bottom: 4%;
+}
+
+
 /* --------overwritting bootstrap defaults------------------------  */
+
+/* container that holds the grid structure  */
+
+#grid-holder {
+  margin-top: 12%;
+  padding: 0 2%;
+}
+
 .banner {
   width: 100%;
   height: auto;
@@ -28,7 +120,7 @@
 }
 
 .card-body  {
-  width: 20vw
+  width: 36vw;
 }
 
 .card-img-top {
@@ -46,29 +138,67 @@
   margin-top: 8%;
 }
 
+
+#product-info {
+padding: 7% 0;
+}
+
+.basket-title {
+  float:left; 
+  /* font-weight: bolder; */
+  margin-left: 8%;
+  margin-bottom: -3%;
+  font-size: 30px;
+  text-shadow: 1px 1px
+}
+
+.product-list {
+  width: 50%;
+}
+
+.total-info {
+  float: right;
+  position: relative;
+  top: -200px;
+  margin-right: 10%
+}
+
+.singular-product {
+  padding-top: 6%
+}
+
+#subtotal {
+  font-size: 23px
+}
+
+#estimated-total {
+  font-size: 25px;
+  font-weight: bold;
+}
 .mx-auto {
   padding-bottom: 8%;
 }
 
 body {
   font-family: "Lato", sans-serif;
+  /* height: 100% */
 }
 
 /* ----------------------top-navbar ----------------------------- */
 .top-bar {
   float: right;
-  padding: 10px 30px;
-  margin-top: -60px;
+  margin-right: 10px;
+  margin-top: -25px; 
 }
 
 .top-bar a {
-  padding: 0 10px;
+  padding: 0 5px;
   color: black;
   text-decoration: none;
 }
 
 .nav-bar {
-margin-left: 5%;
+margin-left: 2%;
 }
 
 .category {
@@ -84,44 +214,20 @@ padding: 0 10px;
 color: black;
 text-decoration: none;
 }
+
 /* ----------------sidebar ----------------------------------------- */
 * {margin: 0; padding: 0;}
 
 a {text-decoration: none;}
 
-/* This class is added on scroll */
-/* .fixed {
-position: fixed;
-top: 0;
-height: 70px;
-z-index: 1;
-} */
 
 body {
 background: #fff;
-font-family: 'open-sans-bold', AvenirNext-Medium, sans-serif;
+font-family: 'open-sans-bold', sans-serif;
 font-size: 18px;
 text-align: center;
 }
 
-/* Navigation Settings */
-nav {
-position: absolute;
-bottom: 0;
-width: 100%;
-height: 70px;
-background: #fff;
-}
-
-nav li {
-display: inline-block;
-padding: 24px 10px;
-}
-
-nav li a {
-color: #757575;
-text-transform: uppercase;
-}
 
 section {
 height: 100vh;
@@ -129,19 +235,22 @@ height: 100vh;
 
 /* Screens Settings */
 #screen1 {
-/* background: #43b29d; */
-background-image: url("image/water_banner.png");
-background-position: center;
-background-size: contain;
-background-repeat: no-repeat
+  background-image: url("image/water_banner.png");
+  height:1024px;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* position: relative; */
 }
+
 
 #screen1 p {
 padding-top: 200px;
 }
 
 .hide {
-display: none!important;
+display: none;
 }
 
 @media only screen and (max-width: 520px) {
@@ -164,7 +273,7 @@ display: none!important;
 
 /* -----------------Review Form ----------------------- */
 .fa-star-o {
-  padding: 4px;
+  padding: 3px;
 }
 
 
@@ -188,6 +297,11 @@ display: none!important;
 
 }
 
+@media screen and (max-height: 600px) {
+  .top-bar {margin-top: -80px!important;}
+
+}
+
 /* -----------------CART PAGE ---------------------------- */
 .cart-holder {
 margin-left: 10%;
@@ -199,4 +313,55 @@ margin-left: 30px
 
 #horizontal-line {
 border-bottom: 1px solid #111;
+}
+
+
+
+/* ----------login page -----------------  */
+
+#login-button {
+  width: 15%;
+}
+
+.no-account {
+  margin-top: 3%;
+}
+
+
+
+#sign-up-button {
+  width: 32%
+}
+ 
+.sign-up-form {
+  text-align: right;
+  margin-right: 25%;
+}
+
+.sign-up-form label {
+  padding: 5px
+}
+
+
+
+
+
+.logo-leftImage {
+  margin-top: 15px;
+  /* width: 50%; */
+  /* position: absolute; */
+  left: 0;
+  height: 600px
+}
+
+.logo-rightImage {
+  margin-top: 15px;
+  /* width: 50%; */
+  /* position: absolute; */
+  right: 0;
+  height: 600px
+}
+
+.logoPage-hero {
+  margin-top: 3%!important
 }

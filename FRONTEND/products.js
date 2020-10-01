@@ -1,23 +1,35 @@
 
 const categories_url = "http://localhost:3000/categories"
-const mainBody = document.querySelector("div.row.row-cols-1.row-cols-md-2")
+const mainBody = document.querySelector(".row.row-cols-1.row-cols-md-2.row-cols-lg-3")
 
 let formHolder = document.querySelector('div#form-container')
 let allProReviews = document.createElement('div')
 let proReview = document.createElement('div')
+let chooseQuantity = document.createElement('select')
+let categoryNameDiv = document.querySelector('.category-name')
+
+let valueSelectedFromQuantity;
 
 let newRating = []
 let allReviews = []
 let globalProduct = []
 let arrayofProduct = []
 
+
 // ----------------------  display all products
+let categoryNameh1 = document.createElement('h1')
+
+        categoryNameh1.className = 'category-name'
+
+    categoryNameDiv.append(categoryNameh1)
+
 
 let showAllProductsByCat = (product) => {
-    initialPage.innerHTML = ""
-    // mainCartContainer.innerText = ''
 
+ 
     mainBody.className = 'row row-cols-1 row-cols-md-2 row-cols-lg-3'
+
+    categoryNameh1.innerText = CategoryName
 
     let productDiv = document.createElement('div')
     productDiv.className = "col mb-4"
@@ -49,12 +61,13 @@ let showAllProductsByCat = (product) => {
     showTheProductPage(product)
     })
 
+
 }
+
 
 // ------------DISPLAY ONE SINGLE PRODUCT --------------------
 
 let showTheProductPage = (product) => {
-
     globalProduct = product
 
     mainBody.className = 'none'
@@ -86,9 +99,35 @@ let showTheProductPage = (product) => {
     let reviewProduct = document.createElement('div')
         reviewProduct.className = 'card-body'
 
-    let rating = document.createElement('p')
-        rating.className = 'card-title'
-        rating.innerText = 'Rating stars'
+        //stars--------------------------
+    let star_holder1 = document.createElement('div')
+        star_holder1.className = 'star-holder'
+        star_holder1.id = 'containerOFstars'
+
+    let star1 = document.createElement('span')
+        star1.className = 'fa fa-star-o'
+        star1.id = 1
+
+    let star2 = document.createElement('span')
+        star2.className = 'fa fa-star-o'
+        star2.id = 2
+
+    let star3 = document.createElement('span')
+        star3.className = 'fa fa-star-o'
+        star3.id = 3
+
+    let star4 = document.createElement('span')
+        star4.className = 'fa fa-star-o'
+        star4.id = 4
+
+    let star5 = document.createElement('span')
+        star5.className = 'fa fa-star-o'
+        star5.id = 5
+
+
+    star_holder1.append(star1, star2, star3, star4, star5)
+
+
 
     let nameOfProduct = document.createElement('h5')
         nameOfProduct.className = 'card-title'
@@ -101,9 +140,15 @@ let showTheProductPage = (product) => {
         priceContent.className = 'text-small'
         priceContent.innerText = `$ ${product.price}.00`
 
+    //---- Adding a select dropdown for quantity on product ------
+            // using the div of hooseQuantity I can append quantity,
+            // and invoke -Creating the dropDown Selection for quantity-
+    //   -------------------------------------------------------
+
     let quantity = document.createElement('p')
         quantity.className = 'card-title'
-        quantity.innerText = 'qty: _____'
+        quantity.innerText = 'Quantity: '
+
 
     let buttonHolder = document.createElement('div')
         buttonHolder.className = 'mx-auto'
@@ -124,13 +169,14 @@ let showTheProductPage = (product) => {
         productDescription.className = 'text-muted'
         productDescription.innerText = product.description      
 
+        quantity.append(chooseQuantity)
         buttonHolder.append(button)
         price.append(priceContent)
         cardHolder.append(proImage)
         contentDescription.append(productDescription)
         cardOfProductInfo.append(reviewProduct)
         reviewContHolder.append(cardOfProductInfo)
-        reviewProduct.append(rating, nameOfProduct, price, quantity, buttonHolder, description, contentDescription)
+        reviewProduct.append(star_holder1, nameOfProduct, price, quantity, buttonHolder, description, contentDescription)
         productDiv.append( cardHolder, reviewContHolder)
 
     
@@ -142,13 +188,13 @@ let showTheProductPage = (product) => {
         allProReviews.className = 'reviews'
         let ratingAndReview = document.createElement('h5')
             ratingAndReview.id ='ratingAndReview'
-            ratingAndReview.innerText = "Ratings & Reviews"
+            ratingAndReview.innerText = "Customer Ratings & Reviews"
         allProReviews.append(ratingAndReview)
 
         singleReviewCard(product)
 
 
-        // ------------Review Form --------------------------
+        // ------------Review Form -----------------------
 
 
     let reviewForm = document.createElement('form')
@@ -161,11 +207,6 @@ let showTheProductPage = (product) => {
         nickNameArea.className = 'form-control'
         nickNameArea.id = 'review-nickname'
         nickNameArea.setAttribute("placeholder", "Create a nickname");
-
-    let userArea = document.createElement('input')
-        userArea.className = 'form-control'
-        userArea.id = 'review-user'
-        userArea.setAttribute("placeholder", "Create a user_id");
 
     let star_holder = document.createElement('div')
         star_holder.className = 'star-holder'
@@ -210,14 +251,25 @@ let showTheProductPage = (product) => {
 
     formContainer.append(reviewForm)
     reviewForm.append(reviewDiv)
-    reviewDiv.append(nickNameArea, reviewArea, rateThisProduct, star_holder, userArea)
+    reviewDiv.append(nickNameArea, reviewArea, rateThisProduct, star_holder)
+
     star_holder.append(star_1, star_2, star_3, star_4, star_5)
 
 
    // ---Event Listener for Stars -----------
    star_holder.addEventListener('click', (rating)=> {
     newRating = rating.target.id
+    console.log('click')
+    console.log(newRating)
+    if (rating.target.style.color = 'red ') {
+    console.log('hi red')
     rating.target.style.color = 'red'
+    
+    }
+    else 
+    {rating.target.style.color = 'inherit' }
+    
+
 })
 
 reviewDiv.append(reviewInput)
@@ -225,16 +277,23 @@ mainBody.append(formContainer)
 
 
 // -----Event Listener for button add to cart --------------
-    button.addEventListener('click', ProductSelectedToAddToCart) 
+    button.addEventListener('click', ProductSelectedToAddToCart) //go to addproduct js
+
 
 
 //------FOR CONNECTING FRONTEND BACKEND------------
 
     reviewForm.addEventListener('submit', (event) => {
+
+        if(!currentUser) {
+                alert('Please Log In First')
+                errorMessage.innerText = "User not log in "
+        }
+
         event.preventDefault()
         let newNickName = event.target['review-nickname'].value
         let newReviewContent = event.target['review-content'].value
-        let newUser = parseInt(event.target['review-user'].value)
+        
 
     fetch(`http://localhost:3000/reviews`, {
         method: "POST",
@@ -244,7 +303,7 @@ mainBody.append(formContainer)
         body: JSON.stringify({
             content: newReviewContent,
             nickname: newNickName,
-            user_id: newUser,
+            user_id: currentUser.id,
             product_id: product.id,
             star_rating: newRating
         })
@@ -262,6 +321,14 @@ mainBody.append(formContainer)
 
 
 }
+
+
+chooseQuantity.addEventListener('change', (evt) => {
+    valueSelectedFromQuantity = parseInt(evt.target.value)
+})
+
+
+
 
  // ----------------------  DISPLAYS ALL REVIEWS UNDER THE FORM!-------------------------
 
@@ -293,6 +360,7 @@ let slapingReviewOnDom = (review) => {
     let reviewHolderSection = document.createElement('div')
         reviewHolderSection.className = 'card-deck'
         reviewHolderSection.id = 'review-holder'
+
     
     let nicknameCard = document.createElement('div')
         nicknameCard.className = 'card'
@@ -300,6 +368,7 @@ let slapingReviewOnDom = (review) => {
 
     let reviewNickname = document.createElement('p')
         reviewNickname.className = 'mx-auto'
+        reviewNickname.id = 'reviewNickName'
         reviewNickname.innerText = `${review.nickname}`
 
     let reviewSkeleton = document.createElement('div')
@@ -307,6 +376,7 @@ let slapingReviewOnDom = (review) => {
 
     let reviewContent = document.createElement('p')
         reviewContent.className = "card-text"
+        reviewContent.id = 'review-holder'
         reviewContent.innerText = `Comment: ${review.content}`
 
     let starRating = document.createElement('p')
@@ -329,16 +399,14 @@ let slapingReviewOnDom = (review) => {
 
     
 
-
-
-
-
-
-
-
-
-
-
+//  Creating the dropDown Selection for quantity
+    for(var i = 1; i <=10; i++){
+        let option = document.createElement("OPTION");
+        chooseQuantity.options.add(option);
+        option.text = i;
+        option.value = i;
+    }
+// -------------------------------------------------
 
 
 
