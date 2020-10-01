@@ -28,7 +28,7 @@
 
 .category-name h1 {
   font-size: 30px;
-    text-shadow: 1px 1px;
+  text-shadow: 1px 1px;
     
 }
 
@@ -168,11 +168,11 @@ padding: 7% 0;
 }
 
 #subtotal {
-  font-size: 25px
+  font-size: 23px
 }
 
 #estimated-total {
-  font-size: 22px;
+  font-size: 25px;
   font-weight: bold;
 }
 .mx-auto {
@@ -189,7 +189,6 @@ body {
   float: right;
   margin-right: 10px;
   margin-top: -25px; 
-  /* text-shadow: 1px 0.5px; */
 }
 
 .top-bar a {
@@ -221,40 +220,14 @@ text-decoration: none;
 
 a {text-decoration: none;}
 
-/* This class is added on scroll */
-/* .fixed {
-position: fixed;
-top: 0;
-height: 70px;
-z-index: 1;
-} */
 
 body {
 background: #fff;
-/* font-family: 'Dosis', sans-serif; */
 font-family: 'open-sans-bold', sans-serif;
 font-size: 18px;
 text-align: center;
 }
 
-/* Navigation Settings */
-/* nav {
-position: absolute;
-bottom: 0;
-width: 100%;
-height: 70px;
-background: #fff;
-}
-
-nav li {
-display: inline-block;
-padding: 24px 10px;
-}
-
-nav li a {
-color: #757575;
-text-transform: uppercase;
-} */
 
 section {
 height: 100vh;
@@ -262,7 +235,6 @@ height: 100vh;
 
 /* Screens Settings */
 #screen1 {
-  /* background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("image/water_banner.png"); */
   background-image: url("image/water_banner.png");
   height:1024px;
   width: 100%;

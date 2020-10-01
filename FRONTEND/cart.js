@@ -19,7 +19,6 @@ let checkIfCartExists = (user) => {
             if(cart.id){
                 console.log(cart, "cart already exists!")
                 currentCart = cart;
-                //redirect user to homepage
             } else {
                 createCartForUser(userLoggingIn)
             }
@@ -91,6 +90,10 @@ productList.append(basketTitle)
 totalInfo.append(subtotal, estimatedTotal, checkOut)
 
 
+    checkOut.addEventListener('click', (evt)=>{
+        alert("Thank you for shopping! Come Back Soon")
+        window.location.reload(true)
+    })
 
 
 let renderCartPage = () => {
@@ -168,12 +171,6 @@ let displayItemsInCart = (item) => {
         buttonRemove.className = 'btn btn-secondary'
         buttonRemove.innerText = 'Remove'
     
-
-
-    // let totalPriceOfItem = (item.quantity * item.product.price)
-    // currentTotal += totalPriceOfItem
-
-
 
 
     cardProductPriceRemove.append(productPrice, buttonRemove)
