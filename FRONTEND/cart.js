@@ -55,38 +55,10 @@ let createCartForUser = (user) => {
 }
 
 
-// ---------------------------------------------------------------------------
-
-
-// console.log(mainCartContainer)
-
-//  Once I clicked Cart nav render page gets called 
-//  next I will be appending stuff in the DOM to show only on the cart nav page. 
-
-
-
-
-// Template gets created with the renderCartPage function 
-// it will be wipe out at the beginning if nothing is render from the fetch 
-
-// first fetch from /carts /:id 
-// response = cart 
-// cart.add_products   ====> product_id ,     quantity 
-// call on product    
-// from here call the attributes of the product , image price
-
-
-
-
-
 
 
 let renderCartPage = () => {
     mainBody.innerText = ''
-
-
-    console.log("Hey this is coming from renderCartPage at cart.js")
-
     fetch(`http://localhost:3000/carts/${currentCart.id}`)
         .then(res => res.json())
         .then(cart => {
@@ -116,6 +88,24 @@ let renderCartPage = () => {
     let singularProduct = document.createElement('div')
         singularProduct.className = 'singular-product'
 
+    let totalInfo = document.createElement('div')
+        totalInfo.className = 'total-info'
+
+    let subtotal = document.createElement('p')
+        subtotal.id = 'subtotal'
+        subtotal.innerText = "Merchandise Subtotal $ --.00"
+
+    let estimatedTotal = document.createElement('p')
+        estimatedTotal.id = 'estimated-total'
+        estimatedTotal.innerText = 'Estimated Total: $--.00'
+
+    let checkOut = document.createElement('button')
+        checkOut.id = 'check-out'
+        checkOut.innerText = 'CHECK OUT'
+
+
+    totalInfo.append(subtotal, estimatedTotal, checkOut)
+
 
   //---Slaping information into the DOM-------
 
@@ -134,7 +124,6 @@ let renderCartPage = () => {
             // imgTag.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRcGLtvwxLa0Ns4AudjBgp3LNSM-kpJ9yvh3K4jpcWjXX2y-NEgvB-oyX19dKLM_Rzt2R4Te1g&usqp=CAc'
             imgTag.src = item.product.image
 
-
         let cardProdNameQuantity = document.createElement('div')
             cardProdNameQuantity.className = 'card'
         
@@ -142,7 +131,6 @@ let renderCartPage = () => {
             productName.id = 'product-name'
             // productName.innerText = 'I am Yoda'
             productName.innerText = item.product.name
-
 
 
         let productQuantity = document.createElement('p')
@@ -154,31 +142,12 @@ let renderCartPage = () => {
 
         let productPrice = document.createElement('p')
             productPrice.id = 'product-price'
-            // productPrice.innerText = '$45.87'
             productPrice.innerText = `Price: ${item.product.price}`
-
 
         let buttonRemove = document.createElement('button')
             buttonRemove.id = 'product-remove'
             buttonRemove.innerText = 'Remove'
         
-        let totalInfo = document.createElement('div')
-            totalInfo.className = 'total-info'
-
-        let subtotal = document.createElement('p')
-            subtotal.id = 'subtotal'
-            subtotal.innerText = "Merchandise Subtotal $ --.00"
-
-        let estimatedTotal = document.createElement('p')
-            estimatedTotal.id = 'estimated-total'
-            estimatedTotal.innerText = 'Estimated Total: $--.00'
-
-        let checkOut = document.createElement('button')
-            checkOut.id = 'check-out'
-            checkOut.innerText = 'CHECK OUT'
-
-
-        totalInfo.append(subtotal, estimatedTotal, checkOut)
         cardProductPriceRemove.append(productPrice, buttonRemove)
         cardProdNameQuantity.append(productName, productQuantity)
         cardImg.append(imgTag)
