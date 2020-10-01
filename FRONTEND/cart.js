@@ -51,16 +51,18 @@ let createCartForUser = (user) => {
 
 
 // ------------------------------------ DOM elements
+mainBody.innerText = ''
+mainBody.className = 'none'
 
 let basketTitle = document.createElement('h5')
-    basketTitle.clasName = 'basket-title'
+    basketTitle.className = 'basket-title'
     basketTitle.innerText = 'My Basket'
 
-let horizonLine = document.createElement('div')
-    horizonLine.id = 'horizontal-line'
+// let horizonLine = document.createElement('div')
+//     horizonLine.id = 'horizontal-line'
 
 let cardDeck = document.createElement('div')
-    cardDeck.className = 'card-deck'
+    cardDeck.className = 'card-deck-2'
 
 let productList = document.createElement('div')
     productList.className = 'product-list'
@@ -82,9 +84,11 @@ let estimatedTotal = document.createElement('p')
     estimatedTotal.innerText = `Estimated Total $${currentTotal}.00`
 
 let checkOut = document.createElement('button')
+    checkOut.className =  'btn btn-danger btn-lg'
     checkOut.id = 'check-out'
     checkOut.innerText = 'CHECK OUT'
 
+productList.append(basketTitle)
 totalInfo.append(subtotal, estimatedTotal, checkOut)
 
 
@@ -147,6 +151,7 @@ let displayItemsInCart = (item) => {
 
     let buttonRemove = document.createElement('button')
         buttonRemove.id = 'product-remove'
+        buttonRemove.className = 'btn btn-secondary'
         buttonRemove.innerText = 'Remove'
     
 
@@ -164,7 +169,7 @@ let displayItemsInCart = (item) => {
     singularProduct.append(cardGroup)
     productList.append(singularProduct)
     cardDeck.append(productList, totalInfo)
-    mainBody.append(basketTitle, horizonLine, cardDeck)
+    mainBody.append(cardDeck)
 
     
     
