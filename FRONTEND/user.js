@@ -209,7 +209,7 @@ let showLoginForm = () => {
 
     let noaccount = document.createElement('div'); // don't have an account? 
         noaccount.className = 'no-account'
-        noaccount.innerText = "Don't have an account? Sign Up"
+        noaccount.innerHTML = "Don't have an account? Please Sign Up"
         logInForm.appendChild(noaccount);
   
     mainBody.append(formContainer)
@@ -239,7 +239,6 @@ let handleLoginForm = (evt) => {
                 checkIfCartExists(currentUser)
                 renderLogoPage()
             } else {
-                // console.error(response)
                 alert("Username Not Found. Please try again.")
             }
         })

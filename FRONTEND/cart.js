@@ -1,5 +1,5 @@
 let currentCart;
-let currentTotal = 0;
+let currentTotal = [];
 
 let checkIfCartExists = (user) => {
 
@@ -58,8 +58,8 @@ let basketTitle = document.createElement('h5')
     basketTitle.className = 'basket-title'
     basketTitle.innerText = 'My Basket'
 
-// let horizonLine = document.createElement('div')
-//     horizonLine.id = 'horizontal-line'
+let horizonLine = document.createElement('div')
+    horizonLine.id = 'horizontal-line'
 
 let cardDeck = document.createElement('div')
     cardDeck.className = 'card-deck-2'
@@ -75,13 +75,12 @@ let totalInfo = document.createElement('div')
 
 let subtotal = document.createElement('p')
     subtotal.id = 'subtotal'
-    subtotal.innerText = `Merchandise Subtotal $${currentTotal}.00`
-
+    // subtotal.innerText = `Merchandise Subtotal $${currentTotal}.00`
 
 
 let estimatedTotal = document.createElement('p')
     estimatedTotal.id = 'estimated-total'
-    estimatedTotal.innerText = `Estimated Total $${currentTotal}.00`
+    // estimatedTotal.innerText = `Estimated Total $${currentTotal}.00`
 
 let checkOut = document.createElement('button')
     checkOut.className =  'btn btn-danger btn-lg'
@@ -104,19 +103,30 @@ let renderCartPage = () => {
     }
 
     if (!currentCart){
-        alert("Please Log in first!")
+        alert("PEASE LOG IN FIRST! :D")
         showLoginForm()
+        currentTotal = [0];
     }
+    else{
     fetch(`http://localhost:3000/carts/${currentCart.id}`)
         .then(res => res.json())
         .then(cart => {
+            currentTotal = [0];
             cart.add_products.forEach((itemInCart)=>{
                 displayItemsInCart(itemInCart)
+
+            let totalPriceOfItem = (itemInCart.quantity * itemInCart.product.price)
+            currentTotal.push(totalPriceOfItem)
+
+            let sum = currentTotal.reduce((a, b) => {
+                return a + b;
+              });
+            subtotal.innerText = `Merchandise Subtotal $${sum}.00`
+            estimatedTotal.innerText = `Estimated Total $${sum}.00`
             })
-        })
-
-
-}   
+        })   
+    }   
+}
 
 
 
@@ -160,8 +170,8 @@ let displayItemsInCart = (item) => {
     
 
 
-    let totalPriceOfItem = (item.quantity * item.product.price)
-    currentTotal += totalPriceOfItem
+    // let totalPriceOfItem = (item.quantity * item.product.price)
+    // currentTotal += totalPriceOfItem
 
 
 
