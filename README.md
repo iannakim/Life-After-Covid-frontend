@@ -2,8 +2,8 @@
 
 # Life After Covid
 
-Life After Covifd is a (SPA) single-page web application that allows users to purchase PPE products
-The inspiration of this app came to us while brainstorming for ideas on what problems we can attemp to resolve during this diffcult time. The products displayed in here have become neccessary items in our every day life.
+Life After Covifd is a (SPA) single-page web application that allows users to purchase PPE products. <br>
+The inspiration of this app came to us while brainstorming for ideas on what problems we can attemp to resolve during this diffcult time. The products displayed in here have become neccessary items in our every day life. <br>
 Users can navigate through a list of PPE products and select the products they wish to purchase. Once they click on each product they will see a description, reviews about the selected products submitted by other users, and the option to submit their own review and to add it to a cart.
 ## Features
 ### Serializers
