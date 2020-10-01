@@ -98,9 +98,36 @@ let showTheProductPage = (product) => {
     let reviewProduct = document.createElement('div')
         reviewProduct.className = 'card-body'
 
-    let rating = document.createElement('p')
-        rating.className = 'card-title'
-        rating.innerText = 'Rating stars'
+        //stars------------------------------------------------
+    let star_holder1 = document.createElement('div')
+        star_holder1.className = 'star-holder'
+        star_holder1.id = 'containerOFstars'
+
+    let star1 = document.createElement('span')
+        star1.className = 'fa fa-star-o'
+        star1.id = 1
+
+    let star2 = document.createElement('span')
+        star2.className = 'fa fa-star-o'
+        star2.id = 2
+
+    let star3 = document.createElement('span')
+        star3.className = 'fa fa-star-o'
+        star3.id = 3
+
+    let star4 = document.createElement('span')
+        star4.className = 'fa fa-star-o'
+        star4.id = 4
+
+    let star5 = document.createElement('span')
+        star5.className = 'fa fa-star-o'
+        star5.id = 5
+
+
+    star_holder1.append(star1, star2, star3, star4, star5)
+
+
+    //----------------------------------------------
 
     let nameOfProduct = document.createElement('h5')
         nameOfProduct.className = 'card-title'
@@ -149,7 +176,7 @@ let showTheProductPage = (product) => {
         contentDescription.append(productDescription)
         cardOfProductInfo.append(reviewProduct)
         reviewContHolder.append(cardOfProductInfo)
-        reviewProduct.append(rating, nameOfProduct, price, quantity, buttonHolder, description, contentDescription)
+        reviewProduct.append(star_holder1, nameOfProduct, price, quantity, buttonHolder, description, contentDescription)
         productDiv.append( cardHolder, reviewContHolder)
 
     
