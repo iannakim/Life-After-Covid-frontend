@@ -44,7 +44,7 @@ Users can navigate through a list of PPE products and select the products they w
  * Allow users to upload a profile picture
 ## Contributors
  * [Anna Kim](https://github.com/iannakim)
- * [Franklkin Bado](https://github.com/fbado66)
+ * [Franklin Bado](https://github.com/fbado66)
 ## Acknowledgements
  We would like to thank:
   * Eric Kim
