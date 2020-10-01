@@ -176,9 +176,6 @@ let showLoginForm = () => {
         heading.innerText = "Welcome Back";
         logInForm.appendChild(heading);
     
-    // let lastline = document.createElement('hr'); // linebreak
-    //     logInForm.appendChild(lastline);
-    
     let linebreak = document.createElement('br'); // space
         logInForm.appendChild(linebreak);
 

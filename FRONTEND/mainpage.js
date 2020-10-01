@@ -25,16 +25,6 @@ topNav.addEventListener('click', (evt) => {
 
 
 
-// let toggleIcon = document.querySelector('.navbar-toggler-collapsed')
-// let categoryClicked = document.querySelector('.nav-link')
-// console.log(categoryClicked)
-
-//     categoryClicked.addEventListener('click', (e) => {
-//         console.log(e)
-
-//         toggleIcon.remove()
-//     })
-
 
 
 
@@ -47,9 +37,8 @@ screen.addEventListener('click', (event) => {
 
 
 
-// ---------------------- accessing products by category from nav bar
+// ----------------------------- accessing products by category from nav bar
 
-// let navBar = document.querySelector('div#nav-bar-items')
 navBar.addEventListener('click', (evt) => {
     mainBody.innerText = ''
 
@@ -86,13 +75,7 @@ let fetchProductsByCat = (id) => {
 }
 
 
-
-let defaultPage = () => {
-
-    
-}
-
-
+// default page 
 let renderLogoPage = () => {
     formContainer.innerText = ''
     categoryNameh1.innerText = ''
