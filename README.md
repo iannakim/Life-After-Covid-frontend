@@ -23,8 +23,7 @@ Users can navigate through a list of PPE products and select the products they w
  * There are 6 models that have the following associations ```has_many, belongs_to and has_many, through: ```
 ## Domain Model
 
-<img src='FRONTEND/image/ERD.png' />
- Coming Soon!
+<img src='FRONTEND/image/ERD.png'> </img>
 ## Tech Stack
  * Ruby on Rails
  * Rails as an API
