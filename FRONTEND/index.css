@@ -1,3 +1,39 @@
+/* ---------------- Header Offer ----------------------- */
+.header-offer {
+  color: white;
+  background: #426876;
+  padding: 1%
+}
+
+.logo {
+  font-size: 30px;
+  text-shadow: 1px 1px ;
+  margin-right: 3%
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* --------overwritting bootstrap defaults------------------------  */
 .banner {
   width: 100%;
@@ -52,13 +88,15 @@
 
 body {
   font-family: "Lato", sans-serif;
+  /* height: 100% */
 }
 
 /* ----------------------top-navbar ----------------------------- */
 .top-bar {
   float: right;
-  padding: 10px 30px;
-  margin-top: -60px;
+  margin-right: 10px;
+  margin-top: -25px; 
+  text-shadow: 1px 0.5px;
 }
 
 .top-bar a {
@@ -68,7 +106,7 @@ body {
 }
 
 .nav-bar {
-margin-left: 5%;
+margin-left: 2%;
 }
 
 .category {
@@ -129,12 +167,16 @@ height: 100vh;
 
 /* Screens Settings */
 #screen1 {
-/* background: #43b29d; */
-background-image: url("image/water_banner.png");
-background-position: center;
-background-size: contain;
-background-repeat: no-repeat
+  /* background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("image/water_banner.png"); */
+  background-image: url("image/water_banner.png");
+  height:1024px;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* position: relative; */
 }
+
 
 #screen1 p {
 padding-top: 200px;

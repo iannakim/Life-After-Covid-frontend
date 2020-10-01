@@ -6,6 +6,7 @@ let formHolder = document.querySelector('div#form-container')
 let allProReviews = document.createElement('div')
 let proReview = document.createElement('div')
 let chooseQuantity = document.createElement('select')
+let categoryNameDiv = document.querySelector('.category-name')
 
 let valueSelectedFromQuantity;
 
@@ -16,10 +17,20 @@ let arrayofProduct = []
 
 
 // ----------------------  display all products
+let categoryNameh1 = document.createElement('h1')
+        categoryNameh1.className = 'category-name'
+
+    categoryNameDiv.append(categoryNameh1)
+
 
 let showAllProductsByCat = (product) => {
+
  
     mainBody.className = 'row row-cols-1 row-cols-md-2 row-cols-lg-3'
+    console.log(CategoryName)
+
+    
+        categoryNameh1.innerText = CategoryName
 
     let productDiv = document.createElement('div')
     productDiv.className = "col mb-4"
@@ -51,7 +62,9 @@ let showAllProductsByCat = (product) => {
     showTheProductPage(product)
     })
 
+
 }
+
 
 // ------------DISPLAY ONE SINGLE PRODUCT --------------------
 

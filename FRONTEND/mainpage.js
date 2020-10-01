@@ -1,8 +1,11 @@
 // ------------------------------------------------ main page stuff here
 
 const screen = document.querySelector("section#screen1")
-const navBar = document.querySelector('div#nav-bar-items')
+const navBar = document.querySelector('#nav-bar-items')
 const topNav = document.querySelector("div.top-bar")
+let CategoryName = 'all'
+
+
 
 
 // ------------------------------------------------ top nav bar event listener
@@ -15,6 +18,20 @@ topNav.addEventListener('click', (evt) => {
         else if (evt.target.id == "signup"){showSignUpForm()}
         else {console.log("hello")}
 })
+
+
+
+// let toggleIcon = document.querySelector('.navbar-toggler-collapsed')
+// let categoryClicked = document.querySelector('.nav-link')
+// console.log(categoryClicked)
+
+//     categoryClicked.addEventListener('click', (e) => {
+//         console.log(e)
+
+//         toggleIcon.remove()
+//     })
+
+
 
 
 screen.addEventListener('click', (event) => {
@@ -38,6 +55,7 @@ let fetchAllProducts = () => {
     fetch("http:localhost:3000/categories")
     .then(res => res.json())
     .then(catPOJO => {
+        categoryName = 'all'
         catPOJO.forEach(function (category) {
             let products = category.products;
             products.forEach(function (product) {
@@ -52,6 +70,9 @@ let fetchProductsByCat = (id) => {
     fetch(`${categories_url}/${id}`)
     .then(res => res.json())
     .then(categoryObj => {
+        CategoryName = categoryObj.name
+        
+
         categoryObj.products.forEach((product) => {
             showAllProductsByCat(product)
         }) 
