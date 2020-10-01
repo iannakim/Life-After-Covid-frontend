@@ -3,7 +3,7 @@
 const screen = document.querySelector("section#screen1")
 const navBar = document.querySelector('#nav-bar-items')
 const topNav = document.querySelector("div.top-bar")
-let CategoryName = 'all'
+let CategoryName
 
 
 
@@ -46,6 +46,9 @@ screen.addEventListener('click', (event) => {
 // let navBar = document.querySelector('div#nav-bar-items')
 navBar.addEventListener('click', (evt) => {
     mainBody.innerText = ''
+
+            CategoryName = evt.target.name
+            
         if (evt.target.id == "all"){fetchAllProducts()}
         else {fetchProductsByCat(evt.target.id)}
 })
@@ -55,7 +58,6 @@ let fetchAllProducts = () => {
     fetch("http:localhost:3000/categories")
     .then(res => res.json())
     .then(catPOJO => {
-        categoryName = 'all'
         catPOJO.forEach(function (category) {
             let products = category.products;
             products.forEach(function (product) {
@@ -70,9 +72,6 @@ let fetchProductsByCat = (id) => {
     fetch(`${categories_url}/${id}`)
     .then(res => res.json())
     .then(categoryObj => {
-        CategoryName = categoryObj.name
-        
-
         categoryObj.products.forEach((product) => {
             showAllProductsByCat(product)
         }) 

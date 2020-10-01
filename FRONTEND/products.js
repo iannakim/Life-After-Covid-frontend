@@ -27,10 +27,8 @@ let showAllProductsByCat = (product) => {
 
  
     mainBody.className = 'row row-cols-1 row-cols-md-2 row-cols-lg-3'
-    console.log(CategoryName)
 
-    
-        categoryNameh1.innerText = CategoryName
+    categoryNameh1.innerText = CategoryName
 
     let productDiv = document.createElement('div')
     productDiv.className = "col mb-4"
