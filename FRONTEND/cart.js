@@ -95,6 +95,10 @@ totalInfo.append(subtotal, estimatedTotal, checkOut)
 
 
 let renderCartPage = () => {
+    categoryNameh1.innerText = ''
+    mainBody.className = ''
+
+
     while (singularProduct.hasChildNodes()) {
         singularProduct.removeChild(singularProduct.lastChild);
     }

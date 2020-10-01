@@ -6,6 +6,10 @@ const formContainer = document.querySelector("div#sign-up-form")
 // ------------------------------------------------ create user
 
 let showSignUpForm = () => {
+    categoryNameh1.innerText = ''
+    mainBody.innerText = ''
+    mainBody.className = ''
+
 
     let signUpForm = document.createElement('form'); // Create New Element Form
         signUpForm.className ='sign-up-form'
@@ -160,6 +164,8 @@ let showSignUpForm = () => {
 
 
 let showLoginForm = () => {
+    categoryNameh1.innerText = ''
+
 
     let logInForm = document.createElement('form'); // Create New Element Form
     formContainer.appendChild(logInForm);
