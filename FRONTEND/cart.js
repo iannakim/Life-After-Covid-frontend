@@ -70,7 +70,7 @@ let renderCartPage = () => {
 }   
 
 
-
+// ------------------------------------ DOM elements
 
     let basketTitle = document.createElement('h5')
         basketTitle.clasName = 'basket-title'
@@ -107,9 +107,8 @@ let renderCartPage = () => {
     totalInfo.append(subtotal, estimatedTotal, checkOut)
 
 
-  //---Slaping information into the DOM-------
+  //----------------------------- display current items in cart
 
-  //this can be a function.
 
   let displayItemsInCart = (item) => {
         let cardGroup = document.createElement('div')
@@ -119,17 +118,15 @@ let renderCartPage = () => {
         let cardImg = document.createElement('div')
             cardImg.className = 'card'
 
-
         let imgTag = document.createElement('img')
-            // imgTag.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRcGLtvwxLa0Ns4AudjBgp3LNSM-kpJ9yvh3K4jpcWjXX2y-NEgvB-oyX19dKLM_Rzt2R4Te1g&usqp=CAc'
             imgTag.src = item.product.image
+            imgTag.alt = item.product.name
 
         let cardProdNameQuantity = document.createElement('div')
             cardProdNameQuantity.className = 'card'
         
         let productName = document.createElement('p')
             productName.id = 'product-name'
-            // productName.innerText = 'I am Yoda'
             productName.innerText = item.product.name
 
 
@@ -142,7 +139,7 @@ let renderCartPage = () => {
 
         let productPrice = document.createElement('p')
             productPrice.id = 'product-price'
-            productPrice.innerText = `Price: ${item.product.price}`
+            productPrice.innerText = `Price: $${item.product.price}.00`
 
         let buttonRemove = document.createElement('button')
             buttonRemove.id = 'product-remove'
