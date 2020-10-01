@@ -3,16 +3,19 @@
 const screen = document.querySelector("section#screen1")
 const navBar = document.querySelector('#nav-bar-items')
 const topNav = document.querySelector("div.top-bar")
-let CategoryName
+let CategoryName = ''
+
 
 
 
 
 // ------------------------------------------------ top nav bar event listener
 topNav.addEventListener('click', (evt) => {
+    
     screen.className = "hide"
     mainBody.innerText = ''
     formContainer.innerText = ''
+
         if (evt.target.id == "cart"){renderCartPage()}
         if (evt.target.id == "login"){showLoginForm()}
         if (evt.target.id == "signup"){showSignUpForm()}
@@ -35,7 +38,8 @@ topNav.addEventListener('click', (evt) => {
 
 screen.addEventListener('click', (event) => {
     screen.className = "hide";
-    //invoke some method here that goes to page with 2 images.
+    renderLogoPage()
+
 })
 
 
@@ -50,6 +54,7 @@ navBar.addEventListener('click', (evt) => {
             CategoryName = evt.target.name
             
         if (evt.target.id == "all"){fetchAllProducts()}
+        else if(evt.target.id == "logo"){renderLogoPage()}
         else {fetchProductsByCat(evt.target.id)}
 })
 
@@ -83,4 +88,22 @@ let fetchProductsByCat = (id) => {
 let defaultPage = () => {
 
     
+}
+
+
+let renderLogoPage = () => {
+    formContainer.innerText = ''
+    categoryNameh1.innerText = ''
+    mainBody.className = 'logoPage-hero'
+    
+let rightImageHolder = document.createElement('img')
+    rightImageHolder.className = 'logo-rightImage'
+    rightImageHolder.src = 'image/same2.png'
+
+let leftImageHolder = document.createElement('img')
+    leftImageHolder.className = 'logo-leftImage'
+    leftImageHolder.src = 'image/sale1.png'
+
+
+    mainBody.append(rightImageHolder, leftImageHolder)
 }

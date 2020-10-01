@@ -358,7 +358,7 @@ border-bottom: 1px solid #111;
 
 
 #sign-up-button {
-  width: 20%
+  width: 32%
 }
  
 .sign-up-form {
@@ -368,4 +368,28 @@ border-bottom: 1px solid #111;
 
 .sign-up-form label {
   padding: 5px
+}
+
+
+
+
+
+.logo-leftImage {
+  margin-top: 15px;
+  /* width: 50%; */
+  /* position: absolute; */
+  left: 0;
+  height: 600px
+}
+
+.logo-rightImage {
+  margin-top: 15px;
+  /* width: 50%; */
+  /* position: absolute; */
+  right: 0;
+  height: 600px
+}
+
+.logoPage-hero {
+  margin-top: 3%!important
 }

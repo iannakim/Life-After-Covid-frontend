@@ -18,6 +18,7 @@ let arrayofProduct = []
 
 // ----------------------  display all products
 let categoryNameh1 = document.createElement('h1')
+
         categoryNameh1.className = 'category-name'
 
     categoryNameDiv.append(categoryNameh1)
