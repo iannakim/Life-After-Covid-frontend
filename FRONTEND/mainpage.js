@@ -1,8 +1,11 @@
 // ------------------------------------------------ main page stuff here
 
 const screen = document.querySelector("section#screen1")
-const navBar = document.querySelector('div#nav-bar-items')
+const navBar = document.querySelector('#nav-bar-items')
 const topNav = document.querySelector("div.top-bar")
+let CategoryName
+
+
 
 
 // ------------------------------------------------ top nav bar event listener
@@ -14,6 +17,20 @@ topNav.addEventListener('click', (evt) => {
         if (evt.target.id == "login"){showLoginForm()}
         if (evt.target.id == "signup"){showSignUpForm()}
 })
+
+
+
+// let toggleIcon = document.querySelector('.navbar-toggler-collapsed')
+// let categoryClicked = document.querySelector('.nav-link')
+// console.log(categoryClicked)
+
+//     categoryClicked.addEventListener('click', (e) => {
+//         console.log(e)
+
+//         toggleIcon.remove()
+//     })
+
+
 
 
 screen.addEventListener('click', (event) => {
@@ -29,6 +46,9 @@ screen.addEventListener('click', (event) => {
 // let navBar = document.querySelector('div#nav-bar-items')
 navBar.addEventListener('click', (evt) => {
     mainBody.innerText = ''
+
+            CategoryName = evt.target.name
+            
         if (evt.target.id == "all"){fetchAllProducts()}
         else {fetchProductsByCat(evt.target.id)}
 })

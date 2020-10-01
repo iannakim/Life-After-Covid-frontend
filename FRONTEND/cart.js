@@ -94,6 +94,11 @@ let renderCartPage = () => {
     while (singularProduct.hasChildNodes()) {
         singularProduct.removeChild(singularProduct.lastChild);
     }
+
+    if (!currentCart){
+        alert("Please Log in first!")
+        showLoginForm()
+    }
     fetch(`http://localhost:3000/carts/${currentCart.id}`)
         .then(res => res.json())
         .then(cart => {

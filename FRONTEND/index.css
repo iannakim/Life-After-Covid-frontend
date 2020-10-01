@@ -1,4 +1,66 @@
+/* ---------------- Header Offer ----------------------- */
+.header-offer {
+  color: white;
+  background: #426876;
+  padding: 1%
+}
+
+/* Navbar  */
+.logo {
+  font-size: 30px;
+  text-shadow: 1px 1px ;
+  margin-right: 3%
+}
+
+
+/* Category name display  */
+
+.category-name {
+    float: left;
+    display: block;
+    margin-left: 4%;
+    margin-top: 4%;
+    width: 250px;
+    position: absolute
+}
+
+.category-name h1 {
+  font-size: 30px;
+    text-shadow: 1px 1px;
+    
+}
+
+
+
+
+/* Styling the card that holds a product on the display all products  */
+.col.mb-4 {
+  margin: 5% 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* --------overwritting bootstrap defaults------------------------  */
+
+/* container that holds the grid structure  */
+
+#grid-holder {
+  margin-top: 12%;
+  padding: 0 2%;
+}
+
 .banner {
   width: 100%;
   height: auto;
@@ -52,13 +114,15 @@
 
 body {
   font-family: "Lato", sans-serif;
+  /* height: 100% */
 }
 
 /* ----------------------top-navbar ----------------------------- */
 .top-bar {
   float: right;
-  padding: 10px 30px;
-  margin-top: -60px;
+  margin-right: 10px;
+  margin-top: -25px; 
+  text-shadow: 1px 0.5px;
 }
 
 .top-bar a {
@@ -68,7 +132,7 @@ body {
 }
 
 .nav-bar {
-margin-left: 5%;
+margin-left: 2%;
 }
 
 .category {
@@ -129,12 +193,16 @@ height: 100vh;
 
 /* Screens Settings */
 #screen1 {
-/* background: #43b29d; */
-background-image: url("image/water_banner.png");
-background-position: center;
-background-size: contain;
-background-repeat: no-repeat
+  /* background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("image/water_banner.png"); */
+  background-image: url("image/water_banner.png");
+  height:1024px;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* position: relative; */
 }
+
 
 #screen1 p {
 padding-top: 200px;
