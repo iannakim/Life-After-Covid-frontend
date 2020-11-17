@@ -61,7 +61,7 @@ Users can navigate through a list of PPE products and select the products they w
  
  ## Set-up for running the app
  
- * Clone this <a href = "https://github.com/fbado66/Mod_3-back-end-Api"> repo </a> into your local computer
+ * Clone this <a href = "https://github.com/iannakim/Life-After-Covid-backend"> repo </a> into your local computer
  * cd into the repository you just cloned and run bundle install in the command line to ensure all the gems are set in your local system 
  * run rails db:migrate to migrate all the tables for the backend 
  * run rails db:seed, to create the seed data
