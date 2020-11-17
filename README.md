@@ -28,7 +28,7 @@ Users can navigate through a list of PPE products and select the products they w
 ## Domain Model
 <img src='FRONTEND/image/ERD.png'> </img>
 
-## Med-Fi Wireframes
+## Wireframes
 
 <img src='FRONTEND/image/wireframe1.png'> </img>
 <img src='FRONTEND/image/wireframe4.png'> </img>
