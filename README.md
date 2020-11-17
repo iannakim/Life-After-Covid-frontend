@@ -8,7 +8,7 @@ Users can navigate through a list of PPE products and select the products they w
 ## Take a Look! 📷
 
 <img src='FRONTEND/image/screenshot1.png'> </img>
-<img src='image/screenshot2.png'> </img>
+<img src='FRONTEND/image/screenshot2.png'> </img>
 
 ## Features
  
@@ -27,14 +27,7 @@ Users can navigate through a list of PPE products and select the products they w
  * There are 6 models that have the following associations ```has_many, belongs_to and has_many, through: ```
 
 ## Domain Model
-<img src='image/ERD.png'> </img>
-
-## Wireframes
-
-<img src='image/wireframe1.png'> </img>
-<img src='image/wireframe4.png'> </img>
-<img src='image/wireframe2.png'> </img>
-<img src='image/wireframe3.png'> </img>
+<img src='FRONTEND/image/ERD.png'> </img>
 
 ## Tech Stack
  * Ruby on Rails
