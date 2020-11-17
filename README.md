@@ -7,7 +7,7 @@ Users can navigate through a list of PPE products and select the products they w
 
 ## Take a Look! 📷
 
-<img src='image/screenshot1.png'> </img>
+<img src='FRONTEND/image/screenshot1.png'> </img>
 <img src='image/screenshot2.png'> </img>
 
 ## Features
