@@ -52,6 +52,9 @@ The inspiration of this app came while brainstorming for ideas help people cope 
    * Add review average on each product
    * Update user information
    * Allow users to upload a profile picture
+   
+## Known Issues
+Please see issues
  
 ## Creators
  * [Anna Kim](https://github.com/iannakim)
