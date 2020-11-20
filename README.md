@@ -46,6 +46,9 @@ The inspiration of this app came while brainstorming for ideas help people cope 
 ## Domain Model
 <img src='FRONTEND/image/ERD.png'> </img>
 
+## Build Status
+* This project was completed in 5 days for the purpose of the project presentation.
+
 ## Future Features for Improvement
    * Improve design elements (look of buttons, background image, text manipulation)
    * Create a chekout Function
