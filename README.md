@@ -3,7 +3,7 @@
 
 See <a href = "https://github.com/iannakim/Life-After-Covid-backend"> Backend Repo Here</a>
 
-Life After Covifd is a (SPA) single-page e-commerce web application that allows users to purchase PPE products. <br>
+Life After Covid is a (SPA) single-page e-commerce web application that allows users to purchase PPE products. <br>
 The inspiration of this app came while brainstorming for ideas help people cope through this diffcult time during COVID. The products displayed on the app have become a neccessary part of our every day lives.
 
 ## CRUD Operation
