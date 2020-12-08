@@ -1,5 +1,6 @@
 # Life After Covid
-*Live Demo Coming Soon!*
+Check out the <a href="https://youtu.be/Krfr_3usRQk"> demo here </a>🎬
+
 
 See <a href = "https://github.com/iannakim/Life-After-Covid-backend"> Backend Repo Here</a>
 
