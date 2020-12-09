@@ -186,9 +186,10 @@ body {
 
 /* ----------------------top-navbar ----------------------------- */
 .top-bar {
-  float: right;
-  margin-right: 10px;
-  margin-top: -25px; 
+  left: 40%;
+  margin-top: -55px;
+  width: 100%;
+  position: absolute;
 }
 
 .top-bar a {
@@ -267,9 +268,6 @@ display: none;
   margin-left: 30px;
 }
 
-/* .col.mb-4 {
-  padding: 4%;
-} */
 
 /* -----------------Review Form ----------------------- */
 .fa-star-o {
@@ -297,9 +295,16 @@ display: none;
 
 }
 
-@media screen and (max-height: 600px) {
-  .top-bar {margin-top: -80px!important;}
+@media screen and (max-width: 1150px) {
+  .top-bar {left: 35%;}
+}
 
+@media screen and (max-width: 750px) {
+  .top-bar {left: 30%;}
+}
+
+@media screen and (max-width: 650px) {
+  .top-bar {left: 25%;}
 }
 
 /* -----------------CART PAGE ---------------------------- */
@@ -341,9 +346,6 @@ border-bottom: 1px solid #111;
 .sign-up-form label {
   padding: 5px
 }
-
-
-
 
 
 .logo-leftImage {
