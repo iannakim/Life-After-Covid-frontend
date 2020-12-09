@@ -1,5 +1,5 @@
 
-const categories_url = "http://localhost:3000/categories"
+const categories_url = "https://enigmatic-sands-23765.herokuapp.com/categories"
 const mainBody = document.querySelector(".row.row-cols-1.row-cols-md-2.row-cols-lg-3")
 
 let formHolder = document.querySelector('div#form-container')
@@ -295,7 +295,7 @@ mainBody.append(formContainer)
         let newReviewContent = event.target['review-content'].value
         
 
-    fetch(`http://localhost:3000/reviews`, {
+    fetch(`https://enigmatic-sands-23765.herokuapp.com/reviews`, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
@@ -341,7 +341,7 @@ chooseQuantity.addEventListener('change', (evt) => {
 // ---------Review Handlers----------------- 
     let displayALLReviews = (product) => {
 
-    const categories_url_review = `http://localhost:3000/products/${product.id}`
+    const categories_url_review = `https://enigmatic-sands-23765.herokuapp.com/products/${product.id}`
     fetch(categories_url_review)
     .then(res => res.json())
     .then(productPOJO => {

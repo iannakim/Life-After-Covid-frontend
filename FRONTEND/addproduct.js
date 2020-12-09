@@ -7,7 +7,7 @@ let ProductSelectedToAddToCart = (event) => {
         valueSelectedFromQuantity = 1
     }
 
-    fetch(`http://localhost:3000/addProducts`, {
+    fetch(`https://enigmatic-sands-23765.herokuapp.com/addProducts`, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'

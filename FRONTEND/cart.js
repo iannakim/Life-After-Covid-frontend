@@ -5,7 +5,7 @@ let checkIfCartExists = (user) => {
 
     let userLoggingIn = user
 
-    fetch("http://localhost:3000/findcart", {
+    fetch("https://enigmatic-sands-23765.herokuapp.com/findcart", {
         method: "POST",
         headers: {
             "content-type": "application/json"
@@ -30,7 +30,7 @@ let createCartForUser = (user) => {
 
     let userLoggingIn = user
 
-    fetch(`http://localhost:3000/cart`, {
+    fetch(`https://enigmatic-sands-23765.herokuapp.com/cart`, {
         method: "POST",
         headers: { 
             "content-type": "application/json" 
@@ -111,7 +111,7 @@ let renderCartPage = () => {
         currentTotal = [0];
     }
     else{
-    fetch(`http://localhost:3000/carts/${currentCart.id}`)
+    fetch(`https://enigmatic-sands-23765.herokuapp.com/carts/${currentCart.id}`)
         .then(res => res.json())
         .then(cart => {
             currentTotal = [0];
@@ -186,7 +186,7 @@ let displayItemsInCart = (item) => {
     
     buttonRemove.addEventListener('click', (event)=>{
 
-        fetch(`http://localhost:3000/removeitem`, {
+        fetch(`https://enigmatic-sands-23765.herokuapp.com/removeitem`, {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json'

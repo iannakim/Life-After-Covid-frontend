@@ -132,7 +132,7 @@ let showSignUpForm = () => {
         let newEmail = event.target["email"].value
     
 
-        fetch(`http://localhost:3000/users`, {
+        fetch(`https://enigmatic-sands-23765.herokuapp.com/users`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -218,7 +218,7 @@ let handleLoginForm = (evt) => {
     evt.preventDefault()
     let userLoggingIn = evt.target["username"].value
 
-    fetch("http://localhost:3000/login", {
+    fetch("https://enigmatic-sands-23765.herokuapp.com/login", {
         method: "POST",
         headers: {
             "content-type": "application/json"

@@ -51,7 +51,7 @@ navBar.addEventListener('click', (evt) => {
 
 // user selects all -- array of hashes returned
 let fetchAllProducts = () => {
-    fetch("http:localhost:3000/categories")
+    fetch("https://enigmatic-sands-23765.herokuapp.com/categories")
     .then(res => res.json())
     .then(catPOJO => {
         catPOJO.forEach(function (category) {
