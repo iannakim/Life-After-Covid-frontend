@@ -18,21 +18,11 @@ The inspiration of this app came while brainstorming for ideas help people cope 
    * select specific quantity before adding items to cart
    * review cart's total dollar amount before checkout
 
-## Sample Images 📷
+## Take a Look! 📷
 
 <img src='FRONTEND/image/screenshot1.png'> </img>
 <img src='FRONTEND/image/screenshot2.png'> </img>
 
-## Tech Stack
-   * Ruby [2.6.1]
-   * Rails API [6.0.3.2]
-   * JavaScript
-   * PostgreSQL
-   * Active Record
-   * Rack Cors
-   * Active Model Serializers
-   * Bootstrap
-   * HTML/CSS
 
  ## Set-Up 
    * clone this <a href = "https://github.com/iannakim/Life-After-Covid-backend"> repo </a> into your local environment
