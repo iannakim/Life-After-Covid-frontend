@@ -7,6 +7,17 @@ See <a href = "https://github.com/iannakim/Life-After-Covid-backend"> Backend Re
 Life After Covid is a (SPA) single-page e-commerce web application that allows users to purchase PPE products. <br>
 The inspiration of this app came while brainstorming for ideas help people cope through this diffcult time during COVID. The products displayed on the app have become a neccessary part of our every day lives.
 
+## Tech Stack
+   * Ruby [2.6.1]
+   * Rails API [6.0.3.2]
+   * JavaScript
+   * PostgreSQL
+   * Active Record
+   * Rack Cors
+   * Active Model Serializers
+   * Bootstrap
+   * HTML/CSS
+
 ## CRUD Operation
   Users can:
    * log in and/or create an account
